@@ -16,6 +16,8 @@ import WorkshopHero from "./pages/Workshops"
 import ConferenceHero from "./pages/Conference"
 import EventHero from "./pages/Events"
 import FestHero from "./pages/Fest"
+import MentorshipHero from "./pages/Mentorship"
+import MockTestHero from "./pages/MockTest"
 function App() {
   const [activePanel, setActivePanel] = useState(null)
 
@@ -33,7 +35,7 @@ function App() {
 
       <div
         className={`pt-20 transition-all duration-300  ${
-          isTalentOpen ? "ml-22" : "ml-52"
+          isTalentOpen ? "ml-32" : "ml-52"
         }`}
       >
         <Routes>
@@ -49,6 +51,8 @@ function App() {
           <Route path="/conference" element={<ConferenceHero />} />
           <Route path="/events" element={<EventHero />} />
           <Route path="/fest" element={<FestHero />} />
+          <Route path= "/mentorship" element={<MentorshipHero />} />
+          <Route path= "/mocktest" element={<MockTestHero />} />
 
 
         </Routes>

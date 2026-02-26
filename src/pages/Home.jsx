@@ -93,12 +93,12 @@ const Home = () => {
     }
     return (
         <>
-            <section className="max-w-6xl mx-auto" >
-                <div className='flex  justify-between  pr-11 items-center'>
+            <section className="w-full mx-auto" >
+                <div className='max-w-6xl mx-auto flex  justify-between  pr-11 items-center'>
                     <div className='text-5xl font-extrabold'><h1 className=''>Unlock Your <span className='color'>Career!</span></h1></div>
                     <div><p>28Mn+ talent inspired to #BeUnstoppable</p></div>
                 </div>
-                <div className="relative py-6">
+                <div className="relative py-6 mx-auto max-w-6xl">
 
                     <div className="pb-4">
 
@@ -149,7 +149,7 @@ const Home = () => {
                 <div>
                     <CompanyMockInterviewSection />
                 </div>
-                <div >
+                <div className="max-w-6xl mx-auto px-5 py-2 ">
                     <img src={banner} alt="" className="rounded-2xl" />
                 </div>
                 <div>

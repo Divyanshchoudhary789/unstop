@@ -6,12 +6,12 @@ export default function Footer() {
             className="
     bg-blue-50
     text-[#2d3748]
-    [clip-path:polygon(0_0,_40%_0,_44%_40px,_100%_40px,_100%_100%,_0_100%)]
+    [clip-path:polygon(0_0,_40%_0,_44%_40px,_100%_40px,_100%_100%,_0_100%)] w-full mx-auto
   "
         >
             <div className=" mx-auto px-11 pt-5 pb-10 flex justify-between items-center 
     border-b-[4px] border-transparent
-    [border-image:repeating-linear-gradient(160deg,_#bfdbfe,_#bfdbfe_1px,_transparent_1px,_transparent_4px)_1]
+    [border-image:repeating-linear-gradient(160deg,_#bfdbfe,_#bfdbfe_1px,_transparent_1px,_transparent_4px)_1] max-w-6xl
   ">
 
                 <div className="flex flex-col gap-3 ">
@@ -62,9 +62,9 @@ export default function Footer() {
 
             </div>
 
-            <div className="max-w-7xl mx-auto px-6  border-blue-300"></div>
+            <div className="max-w-6xl mx-auto px-6  border-blue-300"></div>
 
-            <div className="max-w-7xl mx-auto px-6 py-14 flex gap-16">
+            <div className="max-w-6xl mx-auto px-6 py-14 flex gap-16">
 
                 <div className="flex gap-16 flex-1 text-sm">
 

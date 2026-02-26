@@ -1,0 +1,85 @@
+import { ChevronRight } from "lucide-react";
+
+const companies = [
+  {
+    name: "Amazon",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/6821cc8a863ce_amazon.png",
+    href: "/find-a-mentor",
+  },
+  {
+    name: "Google",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/6821cc9a9ba3b_google.png",
+    href: "/find-a-mentor",
+  },
+  {
+    name: "Microsoft",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/682b139fd4ecc_microsoft.png",
+    href: "/find-a-mentor",
+  },
+  {
+    name: "IBM",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/682b139023523_ibm.png",
+    href: "/find-a-mentor",
+  },
+  {
+    name: "Flipkart",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/6821cd4035042_flipkart.png",
+    href: "/find-a-mentor",
+  },
+];
+
+function CompanyCard({ name, logo, href }) {
+  return (
+    <a
+      href={href}
+      className="group  rounded-2xl border border-gray-200 w-[200px]  overflow-hidden "
+    >
+      <div className=" flex items-center justify-center h-28 bg-gray-50 rounded-2xl m-1">
+        <div className="bg-white rounded-full w-18 h-18 flex items-center justify-center shadow-sm">
+          <img
+            src={logo}
+            alt={name}
+            className="w-16 h-16 object-contain"
+          />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between px-4 py-3">
+        <span className="text-sm font-semibold text-gray-800">
+          {name}
+        </span>
+
+        <ChevronRight
+          size={22}
+          className="text-gray-400 group-hover:text-indigo-600 transition"
+        />
+      </div>
+    </a>
+  );
+}
+
+export default function TopCompanies() {
+  return (
+    <section className=" py-12">
+      <div className="max-w-6xl mx-auto px-6">
+
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-1.5 h-7 bg-indigo-600 rounded-full"></div>
+          <h2 className="text-2xl font-bold text-gray-900">
+            Mentors from Top Companies
+          </h2>
+        </div>
+
+        <div className="flex justify-between">
+          {companies.map((company) => (
+            <CompanyCard
+              key={company.name}
+              {...company}
+            />
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}

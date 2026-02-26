@@ -61,7 +61,7 @@ export default function CompanyMockInterviewSection() {
   }, [activeTab])
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-2">
 
       <div className="flex justify-between items-start mb-7">
         <div className="flex items-start gap-4">

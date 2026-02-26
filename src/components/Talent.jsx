@@ -31,7 +31,7 @@ const Talent = () => {
   const [openMore, setOpenMore] = useState(false)
   const navigate = useNavigate();
   const location = useLocation();
-  const isHome = location.pathname === "/home"
+  const isHome = location.pathname === "/home" 
   useEffect(() => {
     if (!hovered) {
       setOpenMore(false)
@@ -95,8 +95,8 @@ const Talent = () => {
           <SidebarItem icon={<GraduationCap size={22} />} label="Internships" show={hovered} onClick={() => navigate("/internship")} active={location.pathname === "/internship"} />
           <SidebarItem icon={<LuBriefcaseBusiness size={22} />} label="Jobs" show={hovered} onClick={() => navigate("/jobs")} active={location.pathname === "/jobs"} />
           <SidebarItem icon={<GoTrophy size={22} />} label="Competitions" show={hovered} onClick={() => navigate("/competition")} active={location.pathname === "/competition"} />
-          <SidebarItem icon={<LiaUserTieSolid size={22} />} label="Mentorship" show={hovered} active={location.pathname === "/mentorship"} />
-          <SidebarItem icon={<FaBook size={22} />} label="Mock Tests" show={hovered} active={location.pathname === "/tests"} />
+          <SidebarItem icon={<LiaUserTieSolid size={22} />} label="Mentorship" show={hovered} onClick={() => navigate("/mentorship")} active={location.pathname === "/mentorship"} />
+          <SidebarItem icon={<FaBook size={22} />} label="Mock Tests" show={hovered} active={location.pathname === "/mocktest"} onClick={() => navigate('/mocktest')}  />
           <SidebarItem icon={<TbUserScan size={22} />} label="Mock Interview" show={hovered} active={location.pathname === "/interviews"} />
           <SidebarItem icon={<FaCode size={22} />} label="100 Days to Code" show={hovered} active={location.pathname === "/code"} />
           <SidebarItem icon={<NotepadTextDashed size={22} />} label="Courses" show={hovered} active={location.pathname === "/courses"} />
