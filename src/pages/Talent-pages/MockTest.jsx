@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
-import TopRolesSection from "../components/MockTest/TopRoleSection";
+import TopRolesSection from "../../components/MockTest/TopRoleSection";
+import CodingSprintSection from "../../components/Home-components/codeSprintSection"
 export default function MockTestHero() {
     return (
         <section className="w-full flex mx-auto flex-col justify-center">
@@ -11,7 +12,7 @@ export default function MockTestHero() {
       `,
                 }}
             >
-                <div className="max-w-6xl mx-auto px-6  flex flex-col md:flex-row items-center justify-between gap-12 ">
+                <div className="max-w-7xl mx-auto  flex flex-col md:flex-row items-center justify-between gap-12 ">
 
                     <div className="max-w-2xl">
 
@@ -42,6 +43,10 @@ export default function MockTestHero() {
             <div>
                 <TopRolesSection />
             </div>
+            <div className="max-w-8xl mx-auto ml-30">
+                <CodingSprintSection />
+            </div>
+
         </section>
 
     );

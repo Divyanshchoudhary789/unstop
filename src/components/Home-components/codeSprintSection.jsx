@@ -5,14 +5,14 @@ import conquest from "../../assets/home-images/conquest.avif"
 
 export default function CodingSprintSection() {
     return (
-        <div className="max-w-6xl mx-auto  px-6 py-3">
-            <div className="flex gap-3">
+        <div className=" mx-auto  px-6 py-3">
+            <div className="flex gap-3 ">
 
                 <a
                     href="/practice/100-days-of-code"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 border border-gray-200 rounded-xl px-4 bg-[linear-gradient(92.56deg,#deedfc_51.61%,#bfdcf9_89.19%)] flex transition"
+                    className="flex-1 border border-gray-200 rounded-xl px-4 bg-[linear-gradient(92.56deg,#deedfc_51.61%,#bfdcf9_89.19%)] flex transition max-h-[300px] "
                 >
                     <div className="w-[50%] mt-7">
                         <h2 className="text-[26px] font-extrabold uppercase text-gray-900 leading-tight">
@@ -45,7 +45,7 @@ export default function CodingSprintSection() {
                     href="/practice/coding"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 border border-gray-200 rounded-xl px-8 py-10 flex items-center justify-between bg-[linear-gradient(90deg,#fff1bf_42.79%,#ffe589_88.61%)] transition"
+                    className="flex-1 border border-gray-200 rounded-xl px-8 py-10 flex items-center justify-between bg-[linear-gradient(90deg,#fff1bf_42.79%,#ffe589_88.61%)] transition max-h-[300px] "
                 >
                     <div className="max-w-[60%]">
                         <h2 className="text-[28px] font-bold text-gray-900 leading-snug uppercase ">

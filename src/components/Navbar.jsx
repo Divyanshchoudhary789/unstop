@@ -4,7 +4,7 @@ import { Briefcase, Search } from "lucide-react"
 const Navbar = () => {
     return (
         <>
-            <section className='fixed z-100 bg-white w-full flex justify-between items-center p-3 px-11 border-b border-gray-300'>
+            <section className='fixed z-50 bg-white w-full flex justify-between items-center p-3 px-11 border-b border-gray-300 '>
                 <div className='pl-44'><img src={Logo} alt="logo" className='w-11 h-11' /></div>
                 <div className="relative w-full max-w-xl">
                     <Search

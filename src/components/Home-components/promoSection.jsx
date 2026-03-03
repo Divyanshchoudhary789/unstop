@@ -3,7 +3,7 @@ import Promo from "../../assets/home-images/promo.webp"
 
 export default function PromoSection() {
   return (
-    <div className="max-w-6xl px-7 mx-auto flex gap-4 py-3" >
+    <div className="max-w-7xl px-7 mx-auto flex gap-4 py-3" >
 
       <a
         href="https://play.google.com/store/apps/details?id=com.dare2compete.app"

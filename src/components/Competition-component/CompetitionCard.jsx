@@ -27,7 +27,7 @@ export default function InternshipCard({
   const [shared, setShared] = useState(false);
 
   return (
-    <div className="bg-white border border-[#E4E7EC] rounded-[20px] px-7 pt-6 pb-5 w-full max-w-[680px] shadow-sm hover:shadow-xl hover:border-[#C8D0DC] transition-all duration-200 cursor-pointer relative">
+    <div className="bg-white border border-[#E4E7EC] rounded-[20px] px-7 pt-6 pb-5 w-full max-w-[850px] shadow-sm hover:shadow-xl hover:border-[#C8D0DC] transition-all duration-200 cursor-pointer relative">
       <div className="flex justify-between gap-4">
         <div className="flex-1 min-w-0">
           <h3 className="text-[18px] font-bold text-gray-900 leading-snug tracking-[-0.2px] mb-1">

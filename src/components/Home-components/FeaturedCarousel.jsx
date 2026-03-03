@@ -30,12 +30,11 @@ const originalData = [
         mode: "Online",
         price: "Free",
     },
-    // add remaining items
 ];
 
-const CARD_WIDTH = 284; // 220 + gap(24)
+const CARD_WIDTH = 324; 
 const VISIBLE_COUNT = 4;
-const VIEWPORT_WIDTH = 1132; // 4 cards
+const VIEWPORT_WIDTH = 1290; 
 
 const FeaturedCarousel = () => {
     const trackRef = useRef(null);
@@ -99,7 +98,7 @@ const FeaturedCarousel = () => {
     }, [index, isHovered]);
 
     return (
-        <div className="w-full max-w-6xl mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold mb-8 flex items-center gap-4">
   <span className="w-1.5 h-8 bg-color rounded-sm"></span>
   <span>Featured</span>
@@ -133,7 +132,7 @@ const FeaturedCarousel = () => {
                         {data.map((item, i) => (
                             <div
                                 key={i}
-                                className="min-w-[260px] bg-white rounded-xl shadow-md cursor-pointer hover:text-blue-500"
+                                className="min-w-[300px] bg-white rounded-xl shadow-md cursor-pointer hover:text-blue-500"
                             >
                                 <div className="relative">
                                     <img

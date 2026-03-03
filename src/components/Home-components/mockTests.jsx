@@ -48,7 +48,7 @@ export default function CompanyMockTestsSection() {
   }, [activeTab])
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-2">
+    <div className="max-w-7xl mx-auto px-6 py-2">
 
       <div className="flex justify-between items-start mb-7">
         <div className="flex items-start gap-4">
@@ -116,7 +116,7 @@ export default function CompanyMockTestsSection() {
           {data[activeTab].map((item, index) => (
             <div
               key={index}
-              className="w-[225px] shrink-0 snap-start bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center"
+              className="w-[295px] shrink-0 snap-start bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center"
             >
               <img
                 src={item.logo}

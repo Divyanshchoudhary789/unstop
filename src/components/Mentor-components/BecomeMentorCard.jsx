@@ -1,7 +1,7 @@
 export default function BecomeMentorCard() {
     return (
         <div className="w-full flex justify-center pt-20 pb-5">
-            <div className="max-w-6xl w-full px-4">
+            <div className="max-w-7xl w-full px-4">
                 <a
                     href="/become-a-mentor"
                     target="_blank"

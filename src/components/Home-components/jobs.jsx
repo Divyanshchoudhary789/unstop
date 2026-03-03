@@ -161,7 +161,7 @@ export default function JobsSection() {
   }, [])
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-2">
+    <div className="max-w-7xl mx-auto px-6 py-2">
 
       <div className="flex justify-between items-start mb-7">
 
@@ -214,7 +214,7 @@ export default function JobsSection() {
           {jobs.map((item, index) => (
             <div
               key={index}
-              className="w-[355px] shrink-0 snap-start bg-white border border-gray-200 rounded-xl p-4 shadow-sm"
+              className="w-[400px] shrink-0 snap-start bg-white border border-gray-200 rounded-xl p-4 shadow-sm"
             >
               <div className="flex justify-between gap-4">
                 <div className="flex flex-col gap-2">

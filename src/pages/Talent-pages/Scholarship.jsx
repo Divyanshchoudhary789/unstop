@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import CommanCard from "../components/comman-main"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import CommanCard from "../../components/comman-main"
 import {
     Trophy,
     CodeXml,

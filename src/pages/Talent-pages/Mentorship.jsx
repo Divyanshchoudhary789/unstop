@@ -1,11 +1,11 @@
-import CompanyCard from "../components/Mentor-components/CompanyCard"
-import Mentors from "../components/Mentor-components/Mentors"
-import MenteeReviews from "../components/Mentor-components/ReviewCard"
-import BrandsStats from "../components/Mentor-components/BrandStats";
-import ProCards from "../components/Mentor-components/Procards"
-import BecomeMentorCard from "../components/Mentor-components/BecomeMentorCard";
-import FAQSection from "../components/Mentor-components/FAQSection"
-import Footer from "../components/Home-components/footer";
+import CompanyCard from "../../components/Mentor-components/CompanyCard"
+import Mentors from "../../components/Mentor-components/Mentors"
+import MenteeReviews from "../../components/Mentor-components/ReviewCard"
+import BrandsStats from "../../components/Mentor-components/BrandStats";
+import ProCards from "../../components/Mentor-components/Procards"
+import BecomeMentorCard from "../../components/Mentor-components/BecomeMentorCard";
+import FAQSection from "../../components/Mentor-components/FAQSection"
+import Footer from "../../components/Home-components/footer";
 import { useRef, useState, useEffect } from "react";
 import {
     FaFileAlt,
@@ -73,7 +73,6 @@ export default function MentorshipHero() {
         }
     };
 
-    // Swipe support
     useEffect(() => {
         let startX = 0;
 
@@ -114,10 +113,10 @@ export default function MentorshipHero() {
     return (
         <section className="w-full flex  mx-auto   flex-col justify-center  ">
 
-            <div className="w-full max-w-6xl m-auto">
+            <div className="w-full max-w-7xl m-auto">
 
 
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 px-8 md:px-16">
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10  md:px-5">
 
                     <div className="flex-1 flex flex-col gap-5 text-center md:text-left ">
 
@@ -154,7 +153,7 @@ export default function MentorshipHero() {
 
                 </div>
             </div>
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="py-8 max-w-7xl mx-auto">
                 <div className="relative">
 
                     {currentIndex > 0 && (
@@ -175,7 +174,7 @@ export default function MentorshipHero() {
                                 <a
                                     key={index}
                                     href="#"
-                                    className={`${getColorClasses(item.color)} min-w-[130px] min-h-[50px] rounded-2xl flex flex-col items-center justify-center gap-3 px-3 py-1 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-gray-200`}
+                                    className={`${getColorClasses(item.color)} min-w-[136px] min-h-[50px] rounded-2xl flex flex-col items-center justify-center gap-3 px-3 py-1 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-gray-200`}
                                 >
                                     <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#00264d] text-lg">
                                         {item.icon}
@@ -210,7 +209,7 @@ export default function MentorshipHero() {
 
 
             <div className="w-full pb-10">
-                <div className="max-w-6xl mx-auto px-6">
+                <div className="max-w-7xl mx-auto px-6">
 
                     <a
                         href="/unstop-masterclass"

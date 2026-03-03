@@ -1,7 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import CommanCard from "../components/comman-main"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import CompetitionCard from "../../components/Competition-component/CompetitionCard"
+import Banner from "../../../src/assets/home-images/bannerjpg.avif"
 import {
     Trophy,
     CodeXml,
@@ -31,35 +32,44 @@ const categories = [
     // { title: "Finance", icon: Banknote, link: "/internships?category=finance" },
 ]
 
-export default function ConferenceHero() {
+export default function CompetitionHero() {
     return (
-        <section className="w-full bg-white pt-6 ">
-            <div className="max-w-6xl mx-auto px-4">
+        <section className="w-full bg-white pt-6 pl-40">
+            <div className="max-w-7xl mx-auto px-4">
 
                 <div className="flex flex-col md:items-start  mb-2">
                     <h1 className="text-[40px] font-bold text-gray-950">
-                        Online Conferences for Students
+                        21341+ Competitions for Students
                     </h1>
 
                     <h2 className="text-[15px] text-gray-800 mt-2 md:mt-0">
-                        Learn from industry experts and connect with peers through virtual conferences.
+                        Online quizzes, case studies & challenges with prizes
                     </h2>
                 </div>
 
-                <div className="flex gap-[12px] overflow-x-auto overflow-y-visible py-4  no-scrollbar">
-                    {categories.map((item, index) => (
-                        <CategoryCard
-                            key={index}
-                            icon={item.icon}
-                            title={item.title}
-                            link={item.link}
-                        />
-                    ))}
+                <div className="relative">
+
+                    <div className="pointer-events-none absolute -left-1 top-0 h-full w-4 
+                  bg-gradient-to-r from-white to-transparent z-20" />
+
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-12 
+                  bg-gradient-to-l from-white to-transparent z-20" />
+
+                    <div className="flex gap-[12px] overflow-x-auto overflow-y-visible py-4 no-scrollbar">
+                        {categories.map((item, index) => (
+                            <CategoryCard
+                                key={index}
+                                icon={item.icon}
+                                title={item.title}
+                                link={item.link}
+                            />
+                        ))}
+                    </div>
 
                 </div>
             </div>
             <div className="bg-transparent min-h-screen py-6">
-                <div className="max-w-6xl mx-auto px-6">
+                <div className="max-w-7xl mx-auto px-6">
 
                     <div className="flex gap-8">
 
@@ -69,38 +79,49 @@ export default function ConferenceHero() {
                                 <div className="flex items-center gap-3 flex-wrap">
 
                                     <FilterButton label="Filters" count={4} />
-                                    {/* <FilterDropdown label="Type" />
+                                    <FilterDropdown label="Type" />
                                     <FilterDropdown label="Location" />
-                                    <FilterDropdown label="Roles" /> */}
+                                    <FilterDropdown label="Roles" />
                                     <FilterDropdown label="Sort By" />
 
                                 </div>
                             </div>
 
                             <div className="flex flex-col gap-6">
-                                <CommanCard
-                                    title="SNS IMUN’26"
-                                    company="SNS College of Technology (SNSCT), Coimbatore, Tamil Nadu"
-                                    participation="Individual Participation"
-                                    type="Conference"
-                                    location="SNS College of Technology, Coimbatore, Tamil Nadu, India"
+                                <CompetitionCard
+                                    title="Industrial AI Summit 2026 - Startup Challenge"
+                                    company="Indian Institute of Management (IIM), Mumbai"
+                                    experience="1 - 4 Members"
+                                    type="Competition"
+                                    location="Online"
                                     skills={[
-                                        "Policy & Research Support",
-                                        "Conferences",
-                                        "Undergraduate"
+                                        "Others",
+                                        "Applied AI",
+                                        "Supply Chain Operations",
+                                        "Others"
                                     ]}
-                                    postedDate="Feb 16, 2026"
-                                    daysLeft={4}
-                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6992d20067f17_color_caps_transparent_1.png?d=146x146"
+                                    categories={[
+                                        "Others",
+                                        "Applied AI",
+                                        "Supply Chain Operations"
+                                    ]}
+                                    postedDate="Feb 24, 2026"
+                                    daysLeft={7}
+                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699dea7e1a656_SCIE__IIM_Mumbai_IIMM_Standard_1.png"
                                 />
-                                <CommanCard />
+                                <CompetitionCard />
+                                <CompetitionCard />
+                                <CompetitionCard />
+                                <CompetitionCard />
+                                <CompetitionCard />
+                                <CompetitionCard />
                             </div>
 
                         </div>
 
                         <div className="w-[360px] flex-shrink-0 sticky top-18 h-fit ">
                             <FeatureData />
-                            {/* <img src={Banner} alt="" className="w-full  h-32  rounded-xl mt-4 object-cover" /> */}
+                            <img src={Banner} alt="" className="w-full  h-32  rounded-xl mt-4 object-cover" />
                         </div>
 
                     </div>
@@ -115,35 +136,27 @@ const CategoryCard = ({ title, icon: Icon, link }) => {
     return (
         <Link
             to={link}
-            className="
-        relative
-        flex-shrink-0
-        w-[122px]
-        h-[120px]
-        rounded-3xl
-        overflow-hidden
-        flex
-        flex-col
-        justify-between
-        items-center
-        text-center
-        py-3
-        px-20 
-        transition-all
-        duration-500
-        ease-in-out
-        hover:-translate-y-2
-        hover:shadow-xl
-      "
+        className="relative w-36.5 min-w-36.5 h-30 rounded-3xl
+            flex flex-col justify-between text-center p-[16px_12px]
+            transition-all duration-500 ease-in-out
+            hover:-translate-y-2 hover:shadow-xl"
             style={{
-                background: `
-    radial-gradient(circle at 30% 30%, rgba(99,102,241,0.15), transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(59,130,246,0.15), transparent 50%),
-    linear-gradient(135deg, #EEF5FF 0%, #DCEBFF 100%)
-  `,
-                border: "1px solid rgba(255,255,255,0.6)"
+                background:
+                    "linear-gradient(104.37deg, #E9F4FF 10%, #d8e3f1 100%)",
             }}
         >
+
+            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                <div
+                    className="absolute inset-0 bg-no-repeat bg-bottom-right
+          mix-blend-soft-light opacity-60 pointer-events-none"
+                    style={{
+                        backgroundImage:
+                            "url(https://d8it4huxumps7.cloudfront.net/uploads/images/avif/home_page_card_bg_element_new.png)",
+                        backgroundSize: "100%",
+                    }}
+                />
+            </div>
 
 
 
@@ -152,7 +165,6 @@ const CategoryCard = ({ title, icon: Icon, link }) => {
                 <div className="
           w-[64px]
           h-[64px]
-          backdrop-blur-sm
           rounded-2xl
           flex items-center justify-center
         ">

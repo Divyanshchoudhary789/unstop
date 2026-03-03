@@ -3,7 +3,7 @@ import { ArrowRight, Crown } from "lucide-react";
 export default function ProCards() {
     return (
         <div className="  flex items-center justify-center  py-6 ">
-            <div className="max-w-6xl mx-auto w-full px-6">
+            <div className="max-w-7xl mx-auto w-full px-6">
                 <div className="flex flex-wrap gap-2">
 
                     <a
@@ -17,7 +17,7 @@ export default function ProCards() {
                             minHeight: 260,
                         }}
                     >
-                        <div className="absolute  left-86 -top-10 z-10 w-10 h-14 bg-white rounded-full"></div>
+                        <div className="absolute  left-97 -top-10 z-10 w-10 h-14 bg-white rounded-full"></div>
 
                         <div className="absolute left-2/3 -translate-x-1/2 top-0 bottom-0 flex flex-col items-center justify-center gap-1 w-11">
                             <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/avif/explor-free-strip-card-img.png?d=30x538" className="h-full " alt="" />
@@ -51,7 +51,7 @@ export default function ProCards() {
                         </div>
 
                         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition duration-300 pointer-events-none rounded-3xl" />
-                        <div className="absolute left-86  z-10 -bottom-10 w-10 h-14 bg-white rounded-full"></div>
+                        <div className="absolute left-97  z-10 -bottom-10 w-10 h-14 bg-white rounded-full"></div>
                     </a>
 
                     <a

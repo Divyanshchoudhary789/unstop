@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import CommanCard from "../components/comman-main"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import CommanCard from "../../components/comman-main"
 import {
     Trophy,
     CodeXml,
@@ -31,18 +31,18 @@ const categories = [
     // { title: "Finance", icon: Banknote, link: "/internships?category=finance" },
 ]
 
-export default function QuizzesHero() {
+export default function WorkshopHero() {
     return (
         <section className="w-full bg-white pt-6 ">
             <div className="max-w-6xl mx-auto px-4">
 
                 <div className="flex flex-col md:items-start  mb-2">
                     <h1 className="text-[40px] font-bold text-gray-950">
-                        5606+ Online Quizzes & MCQ Tests
+                        Online Webinars for Students
                     </h1>
 
                     <h2 className="text-[15px] text-gray-800 mt-2 md:mt-0">
-                        Test your skills, practice MCQs, and benchmark yourself nationwide.
+                        Learn practical, job-ready skills from industry experts through live sessions.
                     </h2>
                 </div>
 
@@ -79,24 +79,18 @@ export default function QuizzesHero() {
 
                             <div className="flex flex-col gap-6">
                                 <CommanCard
-                                    title="Hack the Quiz: Cyber Challenge 2026"
-                                    company="Anna University (AU), Chennai"
-                                    experience="Individual Participation"
-                                    type="Quiz"
+                                    title="DSA Masterclass"
+                                    company="Gradus"
+                                    participation="Individual Participation"
+                                    type="Workshop"
                                     location="Online"
                                     skills={[
-                                        "Quizzes & Treasure Hunt",
-                                        "IT Operations",
-                                        "Everyone can apply"
+                                        "Data Science",
+                                        "Software Development"
                                     ]}
-                                    categories={[
-                                        "Quizzes & Treasure Hunt",
-                                        "IT Operations",
-                                        "Everyone can apply"
-                                    ]}
-                                    postedDate="Feb 22, 2026"
-                                    daysLeft={1}
-                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699b2a30d1dd8_University.jpeg"
+                                    postedDate="Feb 25, 2026"
+                                    daysLeft={13}
+                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699ecec7b2d85_organisation_image-qym0IG3ol2502659721aHrj9Ljyd3.png?d=146x146"
                                 />
                                 <CommanCard />
                             </div>

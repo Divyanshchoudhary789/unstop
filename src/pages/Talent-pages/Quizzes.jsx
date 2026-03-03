@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import CompetitionCard from "../components/Competition-component/CompetitionCard"
-import Banner from "../../src/assets/home-images/bannerjpg.avif"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import CommanCard from "../../components/comman-main"
 import {
     Trophy,
     CodeXml,
@@ -32,18 +31,18 @@ const categories = [
     // { title: "Finance", icon: Banknote, link: "/internships?category=finance" },
 ]
 
-export default function CompetitionHero() {
+export default function QuizzesHero() {
     return (
-        <section className="w-full bg-white pt-6">
+        <section className="w-full bg-white pt-6 ">
             <div className="max-w-6xl mx-auto px-4">
 
                 <div className="flex flex-col md:items-start  mb-2">
                     <h1 className="text-[40px] font-bold text-gray-950">
-                        21341+ Competitions for Students
+                        5606+ Online Quizzes & MCQ Tests
                     </h1>
 
                     <h2 className="text-[15px] text-gray-800 mt-2 md:mt-0">
-                        Online quizzes, case studies & challenges with prizes
+                        Test your skills, practice MCQs, and benchmark yourself nationwide.
                     </h2>
                 </div>
 
@@ -79,40 +78,34 @@ export default function CompetitionHero() {
                             </div>
 
                             <div className="flex flex-col gap-6">
-                                <CompetitionCard
-                                    title="Industrial AI Summit 2026 - Startup Challenge"
-                                    company="Indian Institute of Management (IIM), Mumbai"
-                                    experience="1 - 4 Members"
-                                    type="Competition"
+                                <CommanCard
+                                    title="Hack the Quiz: Cyber Challenge 2026"
+                                    company="Anna University (AU), Chennai"
+                                    experience="Individual Participation"
+                                    type="Quiz"
                                     location="Online"
                                     skills={[
-                                        "Others",
-                                        "Applied AI",
-                                        "Supply Chain Operations",
-                                        "Others"
+                                        "Quizzes & Treasure Hunt",
+                                        "IT Operations",
+                                        "Everyone can apply"
                                     ]}
                                     categories={[
-                                        "Others",
-                                        "Applied AI",
-                                        "Supply Chain Operations"
+                                        "Quizzes & Treasure Hunt",
+                                        "IT Operations",
+                                        "Everyone can apply"
                                     ]}
-                                    postedDate="Feb 24, 2026"
-                                    daysLeft={7}
-                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699dea7e1a656_SCIE__IIM_Mumbai_IIMM_Standard_1.png"
+                                    postedDate="Feb 22, 2026"
+                                    daysLeft={1}
+                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699b2a30d1dd8_University.jpeg"
                                 />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
+                                <CommanCard />
                             </div>
 
                         </div>
 
                         <div className="w-[360px] flex-shrink-0 sticky top-18 h-fit ">
                             <FeatureData />
-                            <img src={Banner} alt="" className="w-full  h-32  rounded-xl mt-4 object-cover"  />
+                            {/* <img src={Banner} alt="" className="w-full  h-32  rounded-xl mt-4 object-cover" /> */}
                         </div>
 
                     </div>

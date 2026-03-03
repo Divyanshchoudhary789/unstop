@@ -34,7 +34,7 @@ export default function FAQSection() {
 
     return (
         <section className="w-full flex justify-center py-20">
-            <div className="max-w-6xl w-full px-4">
+            <div className="max-w-7xl w-full px-4">
                 <div className="flex items-center gap-4 mb-12">
                     <div className="w-1.5 h-10 bg-blue-600 rounded-full"></div>
 

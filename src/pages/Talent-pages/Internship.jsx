@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import InternshipCard from "../components/Internship-component/InternshipCard"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import InternshipCard from "../../components/Internship-component/InternshipCard"
 import {
     SquareTerminal,
     ListTodo,
@@ -33,8 +33,8 @@ const categories = [
 
 export default function InternshipsHero() {
     return (
-        <section className="w-full bg-white pt-6">
-            <div className="max-w-6xl mx-auto px-4">
+        <section className="w-full bg-white pt-6 pl-40">
+            <div className="max-w-7xl mx-auto px-4 ">
 
                 <div className="flex flex-col md:items-start  mb-2">
                     <h1 className="text-[40px] font-bold text-gray-950">
@@ -46,20 +46,29 @@ export default function InternshipsHero() {
                     </h2>
                 </div>
 
-                <div className="flex gap-[12px] overflow-x-auto overflow-y-visible py-4 no-scrollbar">
-                    {categories.map((item, index) => (
-                        <CategoryCard
-                            key={index}
-                            icon={item.icon}
-                            title={item.title}
-                            link={item.link}
-                        />
-                    ))}
+                <div className="relative">
+
+                    <div className="pointer-events-none absolute -left-1 top-0 h-full w-4 
+                  bg-gradient-to-r from-white to-transparent z-20" />
+
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-12 
+                  bg-gradient-to-l from-white to-transparent z-20" />
+
+                    <div className="flex gap-[12px] overflow-x-auto overflow-y-visible py-4 no-scrollbar">
+                        {categories.map((item, index) => (
+                            <CategoryCard
+                                key={index}
+                                icon={item.icon}
+                                title={item.title}
+                                link={item.link}
+                            />
+                        ))}
+                    </div>
 
                 </div>
             </div>
             <div className="bg-transparent min-h-screen py-6">
-                <div className="max-w-6xl mx-auto px-6">
+                <div className="max-w-7xl mx-auto px-6">
 
                     <div className="flex gap-8">
 
@@ -89,7 +98,7 @@ export default function InternshipsHero() {
                                         "Open Source Intelligence (OSINT)",
                                         "Python"
                                     ]}
-                                    
+
                                     categories={[
                                         "Applied AI",
                                         "Applied AI",
@@ -125,44 +134,33 @@ const CategoryCard = ({ title, icon: Icon, link }) => {
     return (
         <Link
             to={link}
-            className="
-        relative
-        flex-shrink-0
-        w-[122px]
-        h-[120px]
-        rounded-3xl
-        overflow-hidden
-        flex
-        flex-col
-        justify-between
-        items-center
-        text-center
-        py-3
-        px-20 
-        transition-all
-        duration-500
-        ease-in-out
-        hover:-translate-y-2
-        hover:shadow-xl
-      "
-           style={{
-  background: `
-    radial-gradient(circle at 30% 30%, rgba(99,102,241,0.15), transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(59,130,246,0.15), transparent 50%),
-    linear-gradient(135deg, #EEF5FF 0%, #DCEBFF 100%)
-  `,
-  border: "1px solid rgba(255,255,255,0.6)"
-}}
+            className="relative w-36.5 min-w-36.5 h-30 rounded-3xl
+            flex flex-col justify-between text-center p-[16px_12px]
+            transition-all duration-500 ease-in-out
+            hover:-translate-y-2 hover:shadow-xl"
+            style={{
+                background:
+                    "linear-gradient(104.37deg, #E9F4FF 10%, #d8e3f1 100%)",
+            }}
         >
-            
 
+            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                <div
+                    className="absolute inset-0 bg-no-repeat bg-bottom-right
+          mix-blend-soft-light opacity-60 pointer-events-none"
+                    style={{
+                        backgroundImage:
+                            "url(https://d8it4huxumps7.cloudfront.net/uploads/images/avif/home_page_card_bg_element_new.png)",
+                        backgroundSize: "100%",
+                    }}
+                />
+            </div>
 
 
             <div className="z-10 flex items-center justify-center">
                 <div className="
           w-[64px]
           h-[64px]
-          backdrop-blur-sm
           rounded-2xl
           flex items-center justify-center
         ">

@@ -2,7 +2,7 @@ import Total from "../../assets/home-images/total.avif"
 
 export default function OurNumbers() {
   return (
-    <section className="max-w-5xl mx-auto py-5">
+    <section className="max-w-6xl mx-auto py-5">
 
       <p className="text-gray-900 text-lg mb-3">
         Active Users

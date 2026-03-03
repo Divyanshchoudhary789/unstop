@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import CommanCard from "../components/comman-main"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import CommanCard from "../../components/comman-main"
 import {
     Trophy,
     CodeXml,
@@ -31,18 +31,18 @@ const categories = [
     // { title: "Finance", icon: Banknote, link: "/internships?category=finance" },
 ]
 
-export default function WorkshopHero() {
+export default function EventHero() {
     return (
         <section className="w-full bg-white pt-6 ">
             <div className="max-w-6xl mx-auto px-4">
 
                 <div className="flex flex-col md:items-start  mb-2">
                     <h1 className="text-[40px] font-bold text-gray-950">
-                        Online Webinars for Students
+                        Cultural Events for Students
                     </h1>
 
                     <h2 className="text-[15px] text-gray-800 mt-2 md:mt-0">
-                        Learn practical, job-ready skills from industry experts through live sessions.
+                        Showcase your talent, creativity, and campus spirit through live events and competitions.
                     </h2>
                 </div>
 
@@ -69,9 +69,9 @@ export default function WorkshopHero() {
                                 <div className="flex items-center gap-3 flex-wrap">
 
                                     <FilterButton label="Filters" count={4} />
-                                    <FilterDropdown label="Type" />
+                                    {/* <FilterDropdown label="Type" />
                                     <FilterDropdown label="Location" />
-                                    <FilterDropdown label="Roles" />
+                                    <FilterDropdown label="Roles" /> */}
                                     <FilterDropdown label="Sort By" />
 
                                 </div>
@@ -79,18 +79,19 @@ export default function WorkshopHero() {
 
                             <div className="flex flex-col gap-6">
                                 <CommanCard
-                                    title="DSA Masterclass"
-                                    company="Gradus"
+                                    title="Photothon 2026"
+                                    company="Shiv Nadar University (SNU), Greater Noida"
                                     participation="Individual Participation"
-                                    type="Workshop"
-                                    location="Online"
+                                    type="Event"
+                                    location="Shiv Nadar University, Delhi NCR, Greater Noida, Uttar Pradesh, India"
                                     skills={[
-                                        "Data Science",
-                                        "Software Development"
+                                        "Fine Arts",
+                                        "Visual Design",
+                                        "Everyone can apply"
                                     ]}
-                                    postedDate="Feb 25, 2026"
-                                    daysLeft={13}
-                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699ecec7b2d85_organisation_image-qym0IG3ol2502659721aHrj9Ljyd3.png?d=146x146"
+                                    postedDate="Feb 24, 2026"
+                                    daysLeft={3}
+                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699d7eba61864_unnamed__1_.jpg?d=146x146"
                                 />
                                 <CommanCard />
                             </div>

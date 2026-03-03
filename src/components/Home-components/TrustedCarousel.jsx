@@ -92,7 +92,7 @@ const TrustedCarousel = () => {
   }, []);
 
   return (
-    <div className="w-full py-10 max-w-6xl mx-auto">
+    <div className="w-full py-10 max-w-7xl mx-auto">
       <h2 className="text-center text-3xl font-extrabold mb-12">
         <strong className="color">Trusted</strong> by Industry Veterans
       </h2>

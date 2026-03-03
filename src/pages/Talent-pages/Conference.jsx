@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import FeatureData from "../components/Internship-component/FeatureData"
-import CompetitionCard from "../components/Competition-component/CompetitionCard"
-import Banner from "../../src/assets/home-images/bannerjpg.avif"
+import FeatureData from "../../components/Internship-component/FeatureData"
+import CommanCard from "../../components/comman-main"
 import {
     Trophy,
     CodeXml,
@@ -32,18 +31,18 @@ const categories = [
     // { title: "Finance", icon: Banknote, link: "/internships?category=finance" },
 ]
 
-export default function HackathonHero() {
+export default function ConferenceHero() {
     return (
         <section className="w-full bg-white pt-6 ">
             <div className="max-w-6xl mx-auto px-4">
 
                 <div className="flex flex-col md:items-start  mb-2">
                     <h1 className="text-[40px] font-bold text-gray-950">
-                        5606+ Online Quizzes & MCQ Tests
+                        Online Conferences for Students
                     </h1>
 
                     <h2 className="text-[15px] text-gray-800 mt-2 md:mt-0">
-                        Test your skills, practice MCQs, and benchmark yourself nationwide.
+                        Learn from industry experts and connect with peers through virtual conferences.
                     </h2>
                 </div>
 
@@ -70,47 +69,38 @@ export default function HackathonHero() {
                                 <div className="flex items-center gap-3 flex-wrap">
 
                                     <FilterButton label="Filters" count={4} />
-                                    <FilterDropdown label="Type" />
+                                    {/* <FilterDropdown label="Type" />
                                     <FilterDropdown label="Location" />
-                                    <FilterDropdown label="Roles" />
+                                    <FilterDropdown label="Roles" /> */}
                                     <FilterDropdown label="Sort By" />
 
                                 </div>
                             </div>
 
                             <div className="flex flex-col gap-6">
-                                <CompetitionCard
-                                    title="DotSlash 9.0 - 30 Hours National Hackathon"
-                                    company="Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat"
-                                    experience="1 - 4 Members"
-                                    type="Hackathon"
-                                    location="Guest House SVNIT, Mahida Bhavan, Nilam Society, Athwa, Surat, Gujarat 395007, Surat, Gujarat, India"
+                                <CommanCard
+                                    title="SNS IMUN’26"
+                                    company="SNS College of Technology (SNSCT), Coimbatore, Tamil Nadu"
+                                    participation="Individual Participation"
+                                    type="Conference"
+                                    location="SNS College of Technology, Coimbatore, Tamil Nadu, India"
                                     skills={[
-                                        "Software Development",
-                                        "Software Development",
-                                        "Everyone can apply"
+                                        "Policy & Research Support",
+                                        "Conferences",
+                                        "Undergraduate"
                                     ]}
-                                    categories={[
-                                        "Software Development",
-                                        "Everyone can apply"
-                                    ]}
-                                    postedDate="Feb 22, 2026"
-                                    daysLeft={17}
-                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699ac4dbe019b_dotslash.png"
+                                    postedDate="Feb 16, 2026"
+                                    daysLeft={4}
+                                    logo="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6992d20067f17_color_caps_transparent_1.png?d=146x146"
                                 />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
-                                <CompetitionCard />
+                                <CommanCard />
                             </div>
 
                         </div>
 
                         <div className="w-[360px] flex-shrink-0 sticky top-18 h-fit ">
                             <FeatureData />
-                            <img src={Banner} alt="" className="w-full  h-32  rounded-xl mt-4 object-cover" />
+                            {/* <img src={Banner} alt="" className="w-full  h-32  rounded-xl mt-4 object-cover" /> */}
                         </div>
 
                     </div>

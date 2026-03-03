@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight, Star } from "lucide-react";
 
-const CARD_W = 355 + 16;
+const CARD_W = 395 + 16;
 
 const reviews = [
     {
@@ -125,7 +125,7 @@ const reviews = [
 
 function ReviewCard({ review }) {
     return (
-        <div className="flex-shrink-0 w-[355px] bg-[#f5f6f8] rounded-3xl border border-gray-200 p-5 shadow-sm ">
+        <div className="flex-shrink-0 w-[395px] bg-[#f5f6f8] rounded-3xl border border-gray-200 p-5 shadow-sm ">
             <div className="flex items-start justify-between mb-9">
                 <div className="flex items-center gap-3 min-w-0">
                     <img
@@ -213,7 +213,7 @@ export default function MenteeReviews() {
 
     return (
         <section className="py-16">
-            <div className="max-w-6xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-6">
 
                 <div className="flex items-center gap-3 mb-8">
                     <div className="w-1.5 h-8 bg-indigo-600 rounded-full"></div>

@@ -32,18 +32,15 @@ export default function FeaturedSection() {
   return (
     <div className="bg-[#EDEDED] p-4 rounded-3xl max-w-md mx-auto">
 
-      {/* Title */}
       <h2 className="text-[18px] font-semibold text-[#2E2E2E] mb-4">
         Featured
       </h2>
 
-      {/* Card List */}
       <div className="flex flex-col gap-4 bg-white rounded-2xl p-4">
 
         {featuredData.map((item, index) => (
           <div key={index} className="flex items-center gap-4">
 
-            {/* Logo */}
             <div className="w-12 h-12 rounded-xl border border-gray-200 flex items-center justify-center bg-white">
               <img
                 src={item.logo}
@@ -52,7 +49,6 @@ export default function FeaturedSection() {
               />
             </div>
 
-            {/* Text */}
             <div className="flex flex-col">
               <div className="text-[14px] font-semibold text-[#2E2E2E] leading-snug">
                 {item.title}

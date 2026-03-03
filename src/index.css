@@ -1,9 +1,12 @@
 @import "tailwindcss";
+
 /* Hide scrollbar but allow scroll */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-
+body {
+  font-family: 'Inter', sans-serif;
+}
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE + Edge */
   scrollbar-width: none;     /* Firefox */

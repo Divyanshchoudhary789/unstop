@@ -1,25 +1,33 @@
 import { useState } from "react"
 import "keen-slider/keen-slider.min.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
+import Home from "./pages/Talent-pages/Home"
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
 import Talent from "./components/Talent"
 import Recruiter from "./components/Recruiter"
-import InternshipsHero from "./pages/Internship"
-import JobsHero from "./pages/Jobs"
-import CompetitionHero from "./pages/Competition"
-import HackathonHero from "./pages/Hackathon"
-import QuizzesHero from "./pages/Quizzes"
-import ScholarshipHero from "./pages/Scholarship"
-import WorkshopHero from "./pages/Workshops"
-import ConferenceHero from "./pages/Conference"
-import EventHero from "./pages/Events"
-import FestHero from "./pages/Fest"
-import MentorshipHero from "./pages/Mentorship"
-import MockTestHero from "./pages/MockTest"
+import InternshipsHero from "./pages/Talent-pages/Internship"
+import JobsHero from "./pages/Talent-pages/Jobs"
+import CompetitionHero from "./pages/Talent-pages/Competition"
+import HackathonHero from "./pages/Talent-pages/Hackathon"
+import QuizzesHero from "./pages/Talent-pages/Quizzes"
+import ScholarshipHero from "./pages/Talent-pages/Scholarship"
+import WorkshopHero from "./pages/Talent-pages/Workshops"
+import ConferenceHero from "./pages/Talent-pages/Conference"
+import EventHero from "./pages/Talent-pages/Events"
+import FestHero from "./pages/Talent-pages/Fest"
+import MentorshipHero from "./pages/Talent-pages/Mentorship"
+import MockTestHero from "./pages/Talent-pages/MockTest"
+import MockInterviewHero from "./pages/Talent-pages/MockInterview"
+import DashboardHeader from "./components/Recuiter-component/Dashboard"
+import MyJobsInternships from "./components/Recuiter-component/MyInternship"
+import Opportunities from "./components/Recuiter-component/MyOpportunities"
+import Festivals from "./components/Recuiter-component/Festivals"
+import AssessmentsPanel from "./components/Recuiter-component/Assesments"
+import ProfileDropdown from "./components/ProfileDropdown"
+import UserProfile from "./components/User"
 function App() {
-  const [activePanel, setActivePanel] = useState(null)
+  const [activePanel, setActivePanel] = useState("talent")
 
   const isTalentOpen = activePanel === "talent"
 
@@ -31,6 +39,8 @@ function App() {
       />
 
       {activePanel === "talent" && <Talent />}
+      {activePanel === "recruiter" && <Recruiter />}
+
       <Navbar isTalentOpen={isTalentOpen} />
 
       <div
@@ -39,7 +49,7 @@ function App() {
         }`}
       >
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/recruiter" element={<Recruiter />} />
           <Route path="/internship" element={<InternshipsHero />} />
           <Route path="/jobs" element={<JobsHero />} />
@@ -53,7 +63,14 @@ function App() {
           <Route path="/fest" element={<FestHero />} />
           <Route path= "/mentorship" element={<MentorshipHero />} />
           <Route path= "/mocktest" element={<MockTestHero />} />
-
+          <Route path= "/mockinterview" element={<MockInterviewHero />} />
+          <Route path= "/dashboard" element={<DashboardHeader />} />
+          <Route path= "/myjobinternships" element={<MyJobsInternships />} />
+          <Route path= "/myopportunities" element={<Opportunities />} />
+          <Route path= "/festivals" element={<Festivals />} />
+          <Route path= "/assessments" element={<AssessmentsPanel />} />
+          <Route path="/profile" element={<ProfileDropdown />} />
+          <Route path="/user" element={<UserProfile />} />
 
         </Routes>
       </div>
