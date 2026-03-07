@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import {
     LayoutDashboard,
@@ -11,16 +11,30 @@ import { GoTrophy } from "react-icons/go"
 import { LuBriefcaseBusiness, LuPartyPopper } from "react-icons/lu"
 import Search from "../assets/search.svg"
 
-const Recruiter = () => {
+const Recruiter = ({ isForcedOpen, setIsTalentOpen, resetSignal }) => {
     const [hovered, setHovered] = useState(false)
     const navigate = useNavigate();
+    const isExpanded = isForcedOpen || hovered
+    useEffect(() => {
+        setIsTalentOpen?.(isExpanded)
+    }, [isExpanded])
+    useEffect(() => {
+        if (resetSignal > 0) {
+            setHovered(false)
+        }
+    }, [resetSignal])
     return (
         <section
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            onMouseEnter={() => {
+                if (!isForcedOpen) setHovered(true)
+            }}
+
+            onMouseLeave={() => {
+                if (!isForcedOpen) setHovered(false)
+            }}
             className={`fixed top-0 left-20 h-screen bg-white border-r border-gray-200
       transition-all duration-500 ease-in-out z-10
-      ${hovered ? "w-64" : "w-20"}`}
+      ${isExpanded ? "w-64" : "w-20"}`}
         >
             <div className="h-full flex flex-col ">
 
@@ -28,7 +42,7 @@ const Recruiter = () => {
                     <img src={Search} alt="" className="w-9 h-9 shrink-0" />
                     <span
                         className={`font-semibold text-lg text-gray-800 whitespace-nowrap
-            transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"
+            transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"
                             }`}
                     >
                         Recruiter
@@ -38,22 +52,22 @@ const Recruiter = () => {
                 <div className=" flex-1 overflow-y-auto overflow-x-hidden  px-2 flex flex-col justify-between">
                     <div>
 
-                    <SidebarItem icon={<LayoutDashboard size={22} />} label="Dashboard" show={hovered}  onClick={() => navigate("/dashboard")}/>
-                    <SidebarItem icon={<LuBriefcaseBusiness size={22} />} label="My Jobs & Internships" show={hovered} onClick={() => navigate("/myjobinternships")}/>
-                    <SidebarItem icon={<GoTrophy size={22} />} label="My Opportunity" show={hovered} onClick={() => navigate("myopportunities")}/>
-                    <SidebarItem icon={<LuPartyPopper size={22} />} label="Festivals" show={hovered} onClick={() => navigate("/festivals")}/>
-                    <SidebarItem icon={<Book size={22} />} label="Assessments" show={hovered} onClick={() => navigate("/assessments")}/>
-                    <SidebarItem icon={<Cable size={22} />} label="Talent Pipeline" show={hovered} />
+                        <SidebarItem icon={<LayoutDashboard size={22} />} label="Dashboard" show={isExpanded} onClick={() => navigate("/dashboard")} />
+                        <SidebarItem icon={<LuBriefcaseBusiness size={22} />} label="My Jobs & Internships" show={isExpanded} onClick={() => navigate("/myjobinternships")} />
+                        <SidebarItem icon={<GoTrophy size={22} />} label="My Opportunity" show={isExpanded} onClick={() => navigate("myopportunities")} />
+                        <SidebarItem icon={<LuPartyPopper size={22} />} label="Festivals" show={isExpanded} onClick={() => navigate("/festivals")} />
+                        <SidebarItem icon={<Book size={22} />} label="Assessments" show={isExpanded} onClick={() => navigate("/assessments")} />
+                        <SidebarItem icon={<Cable size={22} />} label="Talent Pipeline" show={isExpanded} />
                     </div>
 
                     <div className="pt-6 border-t border-gray-100  mt-4">
-                        <SidebarItem icon={<Download size={22} />} label="My Download's" show={hovered} />
-                        <SidebarItem icon={<Settings size={22} />} label="Settings" show={hovered} />
+                        <SidebarItem icon={<Download size={22} />} label="My Download's" show={isExpanded} />
+                        <SidebarItem icon={<Settings size={22} />} label="Settings" show={isExpanded} />
                     </div>
 
                 </div>
             </div>
-            
+
         </section>
     )
 }

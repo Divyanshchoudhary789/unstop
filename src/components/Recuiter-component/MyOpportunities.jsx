@@ -28,7 +28,7 @@ export default function Opportunities() {
 
     return (
         <div className=" p-6 text-[#1a1d2e]">
-            <div className="max-w-8xl mx-auto">
+            <div className="max-w-8xl mx-auto px-5">
 
                 <div className="flex items-center justify-between pb-4">
                     <h2 className="text-[25px] font-black">Opportunities</h2>

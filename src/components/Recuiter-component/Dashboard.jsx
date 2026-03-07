@@ -2,12 +2,17 @@ import React from "react";
 import LeftSide from "./LeftSide";
 import RightSidebar from "./RightSide";
 import { ChevronDown, Plus } from "lucide-react";
+import { useState } from "react";
+import HostModal from "../HostModal/HostModal";
+import SelectOpportunityModal from "../HostModal/SelectOpportunityModal";
 export default function DashboardHeader() {
+    const [openHostModal, setOpenHostModal] = useState(false)
+    const [step, setStep] = useState("host")
     return (
 
         <section className="w-full flex  mx-auto   flex-col justify-center  ">
 
-            <div className="w-full max-w-8xl m-auto">
+            <div className="w-full max-w-8xl mx-auto px-5">
 
 
                 <div className="w-full bg-white px-6 py-5 h-16 flex items-center justify-between">
@@ -61,16 +66,16 @@ export default function DashboardHeader() {
                             </div>
                         </div>
 
-                        <button
-                            className="flex items-center justify-center gap-2 w-full
-                h-9 px-3 bg-blue-100 border border-blue-400
-                font-semibold color
-                rounded-full shadow-sm hover:bg-blue-200
-                transition-all duration-300 cursor-pointer"
-                        >
-                            <Plus size={18} />
-                            Host
-                        </button>
+                        <div className="relative">
+
+                            <button
+                                onClick={() => setOpenHostModal(!openHostModal)}
+                                className="flex items-center justify-center gap-2 h-9 px-3 bg-blue-100 border border-blue-400 font-semibold rounded-full hover:bg-blue-200 transition cursor-pointer"
+                            >
+                                <Plus size={18} />
+                                Host
+                            </button>
+                        </div>
 
                         <button
                             className="w-10 h-10 rounded-full flex items-center justify-center text-[#1a1d2e] hover:bg-[#dbeafe] hover:text-[#1d4ed8] transition cursor-pointer"
@@ -131,6 +136,24 @@ export default function DashboardHeader() {
                     </div>
                 </div>
             </div>
+            {openHostModal && (
+                <div className="absolute right-0 bottom-12 z-[60]">
+
+                    {step === "host" && (
+                        <HostModal
+                            onClose={() => setOpenHostModal(false)}
+                            onOpportunityClick={() => setStep("opportunity")}
+                        />
+                    )}
+
+                    {step === "opportunity" && (
+                        <SelectOpportunityModal
+                            onBack={() => setStep("host")}
+                        />
+                    )}
+
+                </div>
+            )}
         </ section >
 
 

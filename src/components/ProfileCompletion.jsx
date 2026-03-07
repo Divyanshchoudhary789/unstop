@@ -3,7 +3,7 @@ import Resume from "../assets/resume.webp"
 import Skills from "../assets/skills.webp"
 import Work from "../assets/work.webp"
 import Education from "../assets/education.webp"
-export default function ProfileCompletion() {
+export default function ProfileCompletion({ openEditSection }) {
   return (
     <div className="min-h-screen bg-gray-100 p-6 rounded-xl flex justify-center">
       <div className="w-full max-w-5xl bg-white rounded-xl border border-gray-200">
@@ -13,11 +13,14 @@ export default function ProfileCompletion() {
           desc="Craft an engaging story in your bio and make meaningful connections with peers and recruiters alike!"
           action="Add About"
           img={About}
+          onClick={() => openEditSection("about")}
+
         />
 
         <Divider />
 
-        <ResumeSection />
+        <ResumeSection 
+        onClick={() => openEditSection("resume")} />
 
         <Divider />
 
@@ -26,6 +29,8 @@ export default function ProfileCompletion() {
           desc="Spotlight your unique skills and catch the eye of recruiters looking for your exact talents!"
           action="Add Skills"
           img={Skills}
+          onClick={() => openEditSection("skills")}
+
         />
 
         <Divider />
@@ -35,6 +40,8 @@ export default function ProfileCompletion() {
           desc="Narrate your professional journey and fast-track your way to new career heights!"
           action="Add Work Experience"
           img={Work}
+          onClick={() => openEditSection("experience")}
+
         />
 
         <Divider />
@@ -44,11 +51,15 @@ export default function ProfileCompletion() {
           desc="Showcase your academic journey and open doors to your dream career opportunities!"
           action="Add Education"
           img={Education}
+          onClick={() => openEditSection("education")}
+
         />
 
         <Divider />
 
-        <SocialLinks />
+        <SocialLinks  
+        onClick={() => openEditSection("social")}
+        />
 
         <Divider />
 
@@ -58,7 +69,7 @@ export default function ProfileCompletion() {
     </div>
   );
 }
-const Section = ({ title, desc, action, img }) => {
+const Section = ({ title, desc, action, img, onClick }) => {
   return (
     <div className="flex justify-between items-center px-8 py-6">
       <div className="max-w-xl">
@@ -70,20 +81,19 @@ const Section = ({ title, desc, action, img }) => {
           {desc}
         </p>
 
-        <button className="text-blue-600 font-medium text-sm hover:underline">
+        <button
+          onClick={onClick}
+          className="text-blue-600 font-medium text-sm hover:underline cursor-pointer"
+        >
           {action}
         </button>
       </div>
 
-      <img
-        src={img}
-        alt={title}
-        className="w-20 opacity-70"
-      />
+      <img src={img} alt={title} className="w-20 opacity-70" />
     </div>
-  );
-};
-const ResumeSection = () => {
+  )
+}
+const ResumeSection = ({ onClick }) => {
   return (
     <div className="px-8 py-6">
       <h3 className="text-lg font-semibold text-gray-800 mb-4">
@@ -100,7 +110,10 @@ const ResumeSection = () => {
             Adding your Resume helps you to tell who you are and what makes you different—to employers and recruiters
           </p>
 
-          <button className="text-blue-600 font-medium text-sm hover:underline">
+          <button
+            onClick={onClick}
+            className="text-blue-600 font-medium text-sm hover:underline cursor-pointer"
+          >
             Upload Resume
           </button>
         </div>
@@ -112,8 +125,8 @@ const ResumeSection = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 const Divider = () => (
   <div className="border-t border-gray-200" />
 );
@@ -122,11 +135,14 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  Github
+  Github,
+  X,
+
+
 } from "lucide-react";
 
-const SocialLinks = () => {
-  const icons = [Facebook, Instagram, Linkedin, Github];
+const SocialLinks = ({onClick}) => {
+  const icons = [Facebook, Instagram, Linkedin, Github, X];
 
   return (
     <div className="px-8 py-6">
@@ -142,6 +158,7 @@ const SocialLinks = () => {
           <div
             key={i}
             className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-gray-100 cursor-pointer transition"
+            onClick={onClick}
           >
             <Icon size={18} />
           </div>

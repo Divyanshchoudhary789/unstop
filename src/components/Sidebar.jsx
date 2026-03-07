@@ -1,5 +1,6 @@
 import { Bell, PanelLeftOpen } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 import User from "../assets/user.svg"
 import Mentor from "../assets/mentor.svg"
 import Search from "../assets/search.svg"
@@ -7,20 +8,43 @@ import Profile from "../assets/profile.webp"
 import Talent from "./Talent"
 import TalentPreview from "./TalentPreview"
 import ProfileDropdown from "./ProfileDropdown"
+import Recruiter from "./Recruiter"
+import RecruiterPreview from "./RecruiterPreview"
 const Sidebar = () => {
+    const navigate = useNavigate();
     const [talentReset, setTalentReset] = useState(0)
     const [activePanel, setActivePanel] = useState("talent")
     const [hoverPanel, setHoverPanel] = useState(null)
-    const [isTalentOpen, setIsTalentOpen] = useState(false)
-    const [isTalentForcedOpen, setIsTalentForcedOpen] = useState(false)
+    const [isPanelOpen, setIsPanelOpen] = useState(false)
+    const [isPanelForcedOpen, setIsPanelForcedOpen] = useState(false)
     const [isProfileOpen, setIsProfileOpen] = useState(false)
     const menuItems = [
-        { name: "talent", icon: User, label: "Talent" },
-        // { name: "mentor", icon: Mentor, label: "Mentor" },
-        { name: "recruiter", icon: Search, label: "Recruiter" },
+        { name: "talent", icon: User, label: "Talent", route: "/" },
+        { name: "recruiter", icon: Search, label: "Recruiter", route: "/dashboard" },
     ]
     const profileRef = useRef(null)
+    const location = useLocation()
 
+    const recruiterRoutes = [
+        "/dashboard",
+        "/myjobinternships",
+        "/myopportunities",
+        "/festivals",
+        "/assessments",
+        "/talentpipeline"
+    ]
+
+    useEffect(() => {
+        const isRecruiterRoute = recruiterRoutes.some(route =>
+            location.pathname.startsWith(route)
+        )
+
+        if (isRecruiterRoute) {
+            setActivePanel("recruiter")
+        } else {
+            setActivePanel("talent")
+        }
+    }, [location.pathname])
     useEffect(() => {
         function handleClickOutside(event) {
             if (
@@ -40,24 +64,21 @@ const Sidebar = () => {
         <>
             <section
                 className="fixed z-60 left-0 top-0 w-20 h-screen bg-blue-100 flex flex-col items-center py-4"
-                onMouseLeave={() => setHoverPanel(null)}
             >
                 <button
                     onClick={() => {
-                        if (isTalentOpen) {
-                            setIsTalentForcedOpen(false)
+                        if (isPanelOpen) {
+                            setIsPanelForcedOpen(false)
                             setTalentReset(prev => prev + 1)
                         } else {
-                            setIsTalentForcedOpen(true)
+                            setIsPanelForcedOpen(true)
                         }
                     }}
                     className="p-2 rounded-lg  transition-all cursor-pointer"
                 >
                     <PanelLeftOpen
                         size={26}
-                        className={`transition-all duration-300 ${isTalentOpen
-                            ? "text-gray-900 rotate-180"
-                            : "text-gray-500"
+                        className={`transition-all duration-300 ${isPanelOpen ? "text-gray-900 rotate-180" : "text-gray-500"
                             }`}
                     />
                 </button>
@@ -66,10 +87,14 @@ const Sidebar = () => {
                     {menuItems.map((item) => (
                         <div
                             key={item.name}
-                            onMouseEnter={() => setHoverPanel(item.name)}
-                            onClick={() => {
+                            onMouseEnter={() => {
+                                if (item.name !== activePanel) {
+                                    setHoverPanel(item.name)
+                                }
+                            }} onClick={() => {
                                 setActivePanel(item.name)
                                 setHoverPanel(null)
+                                navigate(item.route)
                             }}
                             className="flex flex-col items-center cursor-pointer group"
                         >
@@ -132,7 +157,10 @@ const Sidebar = () => {
                         />
                     )}
                     {hoverPanel === "recruiter" && (
-                        <div className="p-6">Recruiter Panel</div>
+                        <RecruiterPreview
+                            setActivePanel={setActivePanel}
+                            setHoverPanel={setHoverPanel}
+                        />
                     )}
                 </div>
             )}
@@ -140,8 +168,17 @@ const Sidebar = () => {
             {activePanel === "talent" && (
                 <div className="fixed top-0 left-20 h-screen z-[40]">
                     <Talent
-                        isForcedOpen={isTalentForcedOpen}
-                        setIsTalentOpen={setIsTalentOpen}
+                        isForcedOpen={isPanelForcedOpen}
+                        setIsTalentOpen={setIsPanelOpen}
+                        resetSignal={talentReset}
+                    />
+                </div>
+            )}
+            {activePanel === "recruiter" && (
+                <div className="fixed top-0 left-20 h-screen z-[40]">
+                    <Recruiter
+                        isForcedOpen={isPanelForcedOpen}
+                        setIsTalentOpen={setIsPanelOpen}
                         resetSignal={talentReset}
                     />
                 </div>

@@ -1,34 +1,40 @@
 import { ArrowLeft } from "lucide-react"
 
-const EditProfileHeader = () => {
+const EditProfileHeader = ({ setEditOpen }) => {
   return (
-    <div className="flex items-center gap-3 px-4 py-3">
-      
+    <div
+      className="
+        flex items-center gap-4
+        px-6
+        h-[64px]
+        bg-white
+        border-b border-gray-200
+      "
+    >
       <button
+              onClick={() => setEditOpen(false)}
+
         className="
-          w-8 h-8 flex items-center justify-center
+          w-10 h-10
+          flex items-center justify-center
           rounded-full
-          bg-blue-100
-          hover:bg-blue-700
-          transition-all duration-200
-          group
+          bg-gray-100
+          hover:bg-gray-200
+          transition
+          cursor-pointer
         "
       >
         <ArrowLeft
-          size={16}
-          className="
-            text-gray-900
-            group-hover:text-white
-            transition-colors duration-200
-          "
+          size={18}
+          className="text-gray-700"
         />
       </button>
 
-      <span className="text-sm font-semibold text-gray-900">
+      <h1 className="text-lg font-semibold text-gray-900">
         Edit Profile
-      </span>
+      </h1>
     </div>
   )
 }
 
-export default EditProfileHeader
+export default EditProfileHeader  

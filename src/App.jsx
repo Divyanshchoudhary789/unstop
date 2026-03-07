@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "keen-slider/keen-slider.min.css"
+import 'react-phone-number-input/style.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./pages/Talent-pages/Home"
 import Navbar from "./components/Navbar"
@@ -26,10 +27,13 @@ import Festivals from "./components/Recuiter-component/Festivals"
 import AssessmentsPanel from "./components/Recuiter-component/Assesments"
 import ProfileDropdown from "./components/ProfileDropdown"
 import UserProfile from "./components/User"
+import JobPost from "./pages/Recruiter/JobPost"
+import JobDescription from "./pages/Recruiter/JobDescription"
+import Experience from "./pages/Recruiter/Experience"
 function App() {
   const [activePanel, setActivePanel] = useState("talent")
 
-  const isTalentOpen = activePanel === "talent"
+  // const isTalentOpen = activePanel === "talent"
 
   return (
     <Router>
@@ -38,15 +42,14 @@ function App() {
         setActivePanel={setActivePanel}
       />
 
-      {activePanel === "talent" && <Talent />}
-      {activePanel === "recruiter" && <Recruiter />}
+      {/* {activePanel === "talent" && <Talent />}
+      {activePanel === "recruiter" && <Recruiter />} */}
 
-      <Navbar isTalentOpen={isTalentOpen} />
+      <Navbar isTalentOpen={activePanel === "talent"} />
 
       <div
-        className={`pt-20 transition-all duration-300  ${
-          isTalentOpen ? "ml-32" : "ml-52"
-        }`}
+        className={`pt-20 transition-all duration-300 ${activePanel === "talent" ? "ml-32" : "ml-52"
+          }`}
       >
         <Routes>
           <Route path="/" element={<Home />} />
@@ -61,16 +64,19 @@ function App() {
           <Route path="/conference" element={<ConferenceHero />} />
           <Route path="/events" element={<EventHero />} />
           <Route path="/fest" element={<FestHero />} />
-          <Route path= "/mentorship" element={<MentorshipHero />} />
-          <Route path= "/mocktest" element={<MockTestHero />} />
-          <Route path= "/mockinterview" element={<MockInterviewHero />} />
-          <Route path= "/dashboard" element={<DashboardHeader />} />
-          <Route path= "/myjobinternships" element={<MyJobsInternships />} />
-          <Route path= "/myopportunities" element={<Opportunities />} />
-          <Route path= "/festivals" element={<Festivals />} />
-          <Route path= "/assessments" element={<AssessmentsPanel />} />
+          <Route path="/mentorship" element={<MentorshipHero />} />
+          <Route path="/mocktest" element={<MockTestHero />} />
+          <Route path="/mockinterview" element={<MockInterviewHero />} />
+          <Route path="/dashboard" element={<DashboardHeader />} />
+          <Route path="/myjobinternships" element={<MyJobsInternships />} />
+          <Route path="/myopportunities" element={<Opportunities />} />
+          <Route path="/festivals" element={<Festivals />} />
+          <Route path="/assessments" element={<AssessmentsPanel />} />
           <Route path="/profile" element={<ProfileDropdown />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/jobpost" element={<JobPost />} />
+          <Route path="/jobdescription" element={<JobDescription />} />
+          <Route path="/experience" element={<Experience />} />
 
         </Routes>
       </div>
