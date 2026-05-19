@@ -1,242 +1,168 @@
-import React, { useRef, useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
+import { useState } from "react";
 
-export default function InternshipsSection() {
-  const scrollRef = useRef(null)
-  const cardWidth = 355 + 16
-  const [showLeft, setShowLeft] = useState(false)
-  const [showRight, setShowRight] = useState(true)
+const MapPinIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+  </svg>
+);
+const BriefcaseIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+  </svg>
+);
+const CalendarIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+const MoneyIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2" />
+  </svg>
+);
+const ClockIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+const MessageIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
+const StarIcon = ({ filled }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill={filled ? "#6366f1" : "none"} stroke={filled ? "#6366f1" : "currentColor"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+);
+const MailIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
+  </svg>
+);
 
-  const internships = [
-    {
-      title: "HR Internship",
-      company: "Jubilant Agri and Consumer Products Limited",
-      location: "In Office | Gurgaon",
-      stipend: "10K - 12K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699d2b3737d3a_jacpl_logo.png",
-    },
-    {
-      title: "Campus Ambassador Internship",
-      company: "Desire4travels",
-      location: "Remote",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-680147fae9543_desire4travels_logo-modified.png",
-    },
-    {
-      title: "Sales & Business Development Internship",
-      company: "Youngxcode",
-      location: "Pan India",
-      stipend: "4K - 15K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699d272772e19_organisation_image-WYYO3HSQfN1072982762EikLnzGVxV.png",
-    },
-    {
-      title: "Business Development Internship",
-      company: "XTechon",
-      location: "Remote",
-      stipend: "5K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699d01a1c5f24_logo.jpg",
-    },
-    {
-      title: "Flutter Developer Internship",
-      company: "HxP Technologies",
-      location: "Remote",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699ca0cfb8b61_organisation_image-2FoYCr2ey31632580137xFJ5Yxbigo.png",
-    },
-    {
-      title: "HR Internship",
-      company: "Jubilant Agri and Consumer Products Limited",
-      location: "In Office | Gurgaon",
-      stipend: "10K - 12K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699d2b3737d3a_jacpl_logo.png",
-    },
-    {
-      title: "Campus Ambassador Internship",
-      company: "Desire4travels",
-      location: "Remote",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-680147fae9543_desire4travels_logo-modified.png",
-    },
-    {
-      title: "Sales & Business Development Internship",
-      company: "Youngxcode",
-      location: "Pan India",
-      stipend: "4K - 15K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699d272772e19_organisation_image-WYYO3HSQfN1072982762EikLnzGVxV.png",
-    },
-    {
-      title: "Business Development Internship",
-      company: "XTechon",
-      location: "Remote",
-      stipend: "5K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699d01a1c5f24_logo.jpg",
-    },
-    {
-      title: "Flutter Developer Internship",
-      company: "HxP Technologies",
-      location: "Remote",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699ca0cfb8b61_organisation_image-2FoYCr2ey31632580137xFJ5Yxbigo.png",
-    },
-    {
-      title: "HR Internship",
-      company: "Jubilant Agri and Consumer Products Limited",
-      location: "In Office | Gurgaon",
-      stipend: "10K - 12K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699d2b3737d3a_jacpl_logo.png",
-    },
-    {
-      title: "Campus Ambassador Internship",
-      company: "Desire4travels",
-      location: "Remote",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-680147fae9543_desire4travels_logo-modified.png",
-    },
-    {
-      title: "Sales & Business Development Internship",
-      company: "Youngxcode",
-      location: "Pan India",
-      stipend: "4K - 15K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699d272772e19_organisation_image-WYYO3HSQfN1072982762EikLnzGVxV.png",
-    },
-    {
-      title: "Business Development Internship",
-      company: "XTechon",
-      location: "Remote",
-      stipend: "5K / Month",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-699d01a1c5f24_logo.jpg",
-    },
-    {
-      title: "Flutter Developer Internship",
-      company: "HxP Technologies",
-      location: "Remote",
-      logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/699ca0cfb8b61_organisation_image-2FoYCr2ey31632580137xFJ5Yxbigo.png",
-    },
-  ]
+const Tag = ({ icon, label }) => (
+  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 border border-slate-200 whitespace-nowrap">
+    {icon}
+    {label}
+  </span>
+);
 
-  const updateButtons = () => {
-    const el = scrollRef.current
-    if (!el) return
-    setShowLeft(el.scrollLeft > 0)
-    setShowRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5)
-  }
+function getInitials(name) {
+  return name.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase();
+}
 
-  const scroll = (direction) => {
-    if (!scrollRef.current) return
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -cardWidth : cardWidth,
-      behavior: "smooth",
-    })
-  }
+const logoColors = [
+  { bg: "bg-amber-400", text: "text-white" },
+  { bg: "bg-indigo-500", text: "text-white" },
+  { bg: "bg-rose-400", text: "text-white" },
+  { bg: "bg-emerald-500", text: "text-white" },
+  { bg: "bg-sky-500", text: "text-white" },
+];
 
-  useEffect(() => {
-    updateButtons()
-    const el = scrollRef.current
-    el.addEventListener("scroll", updateButtons)
-    return () => el.removeEventListener("scroll", updateButtons)
-  }, [])
+function CompanyLogo({ logo, name, idx }) {
+  const color = logoColors[idx % logoColors.length];
+  if (logo) return <img src={logo} alt={name} className="w-10 h-10 rounded-xl object-contain bg-white border border-slate-200 p-1" />;
+  return (
+    <div className={`w-10 h-10 rounded-xl ${color.bg} ${color.text} flex items-center justify-center text-sm font-bold flex-shrink-0`}>
+      {getInitials(name)}
+    </div>
+  );
+}
+
+function InternshipCard({ item, idx }) {
+  const [saved, setSaved] = useState(false);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-2">
+    <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col gap-3" style={{ width: "280px" }}>
 
-      <div className="flex justify-between items-start mb-7">
-
-        <div className="flex items-start gap-4">
-          <div className="w-1.5 h-12 bg-color rounded-sm mt-1"></div>
-          <div>
-            <h2 className="text-[28px] font-semibold text-[#1c1c1c] leading-tight">
-              Internships
-            </h2>
-            <div className="text-[14px] text-gray-500 font-normal mt-1">
-              Unleash internships tailored to your aspirations.
-            </div>
-          </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <CompanyLogo logo={item.logo} name={item.company} idx={idx} />
+          <span className="text-sm font-semibold text-slate-700">{item.company}</span>
         </div>
-
-        <a
-          href="/internships"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 border border-blue-200 color bg-blue-50 px-5 py-2 rounded-full text-[14px] font-semibold transition-all duration-300  group"
-        >
-          <span>View All</span>
-          <span className="w-5 h-5 flex items-center justify-center rounded-full bg-color group-hover:bg-white transition">
-            <ChevronRight size={12} className="text-white  transition" />
+        {item.isNew && (
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-600 border border-indigo-200">
+            New
           </span>
-        </a>
+        )}
       </div>
 
-      <div className="relative">
+      <div className="border-t border-slate-100" />
 
-        {showLeft && (
-          <button
-            onClick={() => scroll("left")}
-            className="absolute -left-14 top-1/2 -translate-y-1/2 z-20 
-             w-12 h-12 flex items-center justify-center
-             bg-white border border-gray-200
-             shadow-xl rounded-full
-             hover:scale-110 hover:shadow-2xl
-             transition-all duration-300"
-          >
-            <ChevronLeft size={22} />
+      <h4 className="text-base font-bold text-slate-900 leading-snug">{item.title}</h4>
+
+      <div className="flex flex-wrap gap-2">
+        <Tag icon={<MapPinIcon />} label={item.location} />
+        <Tag icon={<BriefcaseIcon />} label={item.type} />
+        <Tag icon={<CalendarIcon />} label={item.duration} />
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <Tag icon={<MoneyIcon />} label={item.stipend} />
+        {item.shift && <Tag icon={<ClockIcon />} label={item.shift} />}
+      </div>
+
+      <div className="border-t border-slate-100" />
+
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <button className="w-9 h-9 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-500 hover:border-indigo-300 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-150">
+            <MessageIcon />
           </button>
-        )}
+          <button
+            onClick={() => setSaved(s => !s)}
+            className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-150 ${saved
+              ? "border-indigo-300 bg-indigo-50 text-indigo-500"
+              : "border-slate-200 bg-slate-50 text-slate-500 hover:border-indigo-300 hover:text-indigo-500 hover:bg-indigo-50"
+              }`}
+          >
+            <StarIcon filled={saved} />
+          </button>
+        </div>
+        <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-semibold transition-colors duration-150 shadow-sm">
+          <MailIcon />
+          Apply
+        </button>
+      </div>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none" }}
-        >
-          {internships.map((item, index) => (
-            <div
-              key={index}
-              className="w-[400px] shrink-0 snap-start bg-white border border-gray-200 rounded-xl p-4 shadow-sm"
-            >
-              <div className="flex justify-between gap-4">
-                <div className="flex flex-col gap-2">
+    </div>
+  );
+}
 
-                  {item.stipend && (
-                    <div className="text-green-700 text-[12px] font-medium">
-                      {item.stipend}
-                    </div>
-                  )}
+const internships = [
+  { title: "Human Resources (HR)", company: "Edlernity", logo: null, location: "Remote", type: "Internship", stipend: "₹4K–11.2K", duration: "2 Months", shift: "Flexible", isNew: true },
+  { title: "Human Resources (HR)", company: "Mintifi Finserve", logo: null, location: "Mumbai", type: "Full-Time", stipend: "₹10K–15K/mo", duration: "6 Months", shift: null, isNew: false },
+  { title: "Content & Social Media Marketing", company: "Phenom People", logo: "https://internshala-uploads.internshala.com/logo%2Fd8due9qdxly-8614.png.webp", location: "Hyderabad", type: "Internship", stipend: "₹15K–20K/mo", duration: "3 Months", shift: "Day Shift", isNew: true },
+  { title: "Video Editing/Making", company: "91 Trucks", logo: null, location: "Gurgaon", type: "Part-Time", stipend: "₹10K–15K/mo", duration: "2 Months", shift: "Evening", isNew: false },
+  // { title: "Marketing", company: "University Of Essex", logo: "https://internshala-uploads.internshala.com/logo%2F5e2fdf09bbc171580195593.jpg.webp", location: "Delhi (Hybrid)", type: "Internship", stipend: "₹25K/mo", duration: "3 Months", shift: "Morning", isNew: true },
+];
 
-                  <div className="flex items-center gap-1 text-gray-600 text-[12px]">
-                    <MapPin size={14} />
-                    <span className="line-clamp-1">
-                      {item.location}
-                    </span>
-                  </div>
-                </div>
+export default function App() {
+  return (
+    <div className="max-w-7xl mx-auto  py-10 px-6">
+      <div className="mb-10 group">
 
-                <img
-                  src={item.logo}
-                  alt=""
-                  className="w-[66px] h-[66px] rounded-md object-cover"
-                />
-              </div>
-
-              <div className="mt-4">
-                <h3 className="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-2">
-                  {item.title}
-                </h3>
-                <p className="text-[12px] text-gray-500 mt-2 line-clamp-1">
-                  {item.company}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="inline-block mb-3 rotate-[-3deg]  transition">
+          <span className="px-4 py-1.5 rounded-full bg-indigo-500 text-white text-xs font-semibold shadow-md">
+            🔥 Trending
+          </span>
         </div>
 
-        {showRight && (
-          <button
-            onClick={() => scroll("right")}
-            className="absolute -right-14 top-1/2 -translate-y-1/2 z-20
-             w-12 h-12 flex items-center justify-center
-             bg-white border border-gray-200
-             shadow-xl rounded-full
-             hover:scale-110 hover:shadow-2xl
-             transition-all duration-300"
-          >
-            <ChevronRight size={22} />
-          </button>
-        )}
+        <h3 className="text-3xl md:text-4xl font-bold text-slate-900">
+          Internships
+        </h3>
+
+        <p className="text-sm text-slate-500 mt-2">
+          Discover internships from startups and top companies tailored for students.
+        </p>
+
+      </div>
+      <div className="flex flex-wrap gap-5">
+        {internships.map((item, idx) => (
+          <InternshipCard key={idx} item={item} idx={idx} />
+        ))}
       </div>
     </div>
-  )
+  );
 }

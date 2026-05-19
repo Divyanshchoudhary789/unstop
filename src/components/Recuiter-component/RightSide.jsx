@@ -1,164 +1,124 @@
 import React, { useState } from "react";
+import { Bell, ArrowUpRight } from "lucide-react";
 
 export default function RightSidebar() {
   const [activeTab, setActiveTab] = useState("alerts");
 
   return (
-    <div className="w-[500px] flex flex-col gap-4 p-6">
+    <div className="w-[420px] flex flex-col gap-6 p-6">
 
-      <div className="relative rounded-2xl p-5 overflow-hidden min-h-[160px]
-        bg-gradient-to-br from-[#c8e6ff] via-[#d4f0c0] to-[#f5f7a0]">
+      {/* Experience Card */}
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
 
-        <div className="absolute inset-0 pointer-events-none text-[#1a1a2e]/60">
-          <span className="absolute top-4 left-12 text-sm">✦</span>
-          <span className="absolute top-10 right-32 text-xs">+</span>
-          <span className="absolute top-3 right-28 text-xs">✦</span>
-          <span className="absolute bottom-6 right-32 text-xs">✦</span>
-          <span className="absolute bottom-3 left-10 text-xs">+</span>
-        </div>
+        <div className="flex items-start justify-between gap-4">
 
-        <svg
-          className="absolute top-3 left-4 w-7 h-7 text-[#1a1d2e] opacity-80"
-          viewBox="0 0 28 28"
-        >
-          <path
-            d="M16 2L6 16h8l-2 10 12-14h-8L16 2z"
-            fill="currentColor"
-          />
-        </svg>
+          <div className="flex flex-col gap-2 max-w-[230px]">
 
-        <div className="relative z-10 max-w-[170px] pt-6 flex flex-col gap-2">
-          <strong className="text-[16px] font-extrabold text-[#1a1d2e] leading-tight">
-            Customise your Experience
-          </strong>
-          <p className="text-[12px] text-gray-700 leading-relaxed">
-            Enhance your experience with tailored services designed to meet
-            your specific requirements.
-          </p>
+            <h3 className="text-[14px] font-semibold text-slate-900 leading-none">
+              Customise your experience
+            </h3>
 
-          <button className="mt-2 flex items-center gap-2 px-4 h-8 text-xs font-bold text-white bg-[#1a1d2e] rounded-full hover:bg-[#2d3561] transition">
-            Contact Us
-            <svg width="14" height="14" viewBox="0 0 14 14">
-              <path
-                d="M2.5 11.5L11.5 2.5M11.5 2.5H5.5M11.5 2.5V8.5"
-                stroke="white"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
+            <p className="text-[12px] text-slate-500 leading-relaxed">
+              Enhance your hiring workflow with tailored services built
+              specifically for recruiters.
+            </p>
 
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 w-[110px] h-[110px]">
-          <div className="relative w-full h-full rounded-full
-            bg-gradient-to-br from-[#4a4a4a] to-[#1a1a1a]
-            shadow-[0_8px_32px_rgba(0,0,0,0.45)]
-            border-2 border-[#3a3a3a]
-            flex items-center justify-center">
-
-            <span className="text-[32px] font-extrabold text-[#d4a843] tracking-[-2px] drop-shadow-md">
-              un
-            </span>
-
-            <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full
-              bg-gray-200 border border-gray-300
-              flex items-center justify-center
-              text-[8px] font-extrabold text-gray-700">
-              un
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-xl border border-[#e8eaf0] shadow-sm overflow-hidden">
-
-        <div className="border-b border-[#e8eaf0]">
-          <div className="flex h-12 px-2">
-            <Tab
-              label="Alerts (1)"
-              active={activeTab === "alerts"}
-              onClick={() => setActiveTab("alerts")}
-            />
-            <Tab
-              label="Upcoming"
-              active={activeTab === "upcoming"}
-              onClick={() => setActiveTab("upcoming")}
-            />
-          </div>
-        </div>
-
-        <div className="min-h-[300px] py-2">
-          <div className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition cursor-pointer">
-
-            <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center">
-              <svg width="22" height="22" viewBox="0 0 22 22">
-                <rect
-                  x="2"
-                  y="7"
-                  width="18"
-                  height="13"
-                  rx="2"
-                  stroke="#4b5563"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M7 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-                  stroke="#4b5563"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-                <circle cx="11" cy="13.5" r="1.5" fill="#4b5563" />
-              </svg>
-            </div>
-
-            <div className="flex-1 min-w-0 flex flex-col gap-1">
-              <span className="text-[11px] font-bold text-red-600">
-                Listing Not Complete
-              </span>
-              <span className="text-[14px] font-bold text-[#1a1d2e] truncate">
-                Untitled
-              </span>
-              <span className="inline-flex w-fit px-2 py-1 text-[11px]
-                bg-gray-100 border border-gray-300 rounded-md text-gray-600">
-                Competitions
-              </span>
-            </div>
-
-            <button className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition">
-              <svg width="16" height="16" viewBox="0 0 16 16">
-                <path
-                  d="M3 13L13 3M13 3H7M13 3V9"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <button className="mt-1 flex items-center gap-2 w-fit h-[30px] px-3 text-[12px] font-medium rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition">
+              Contact Us
+              <ArrowUpRight size={14} />
             </button>
 
           </div>
+
+          <div className="w-[40px] h-[40px] rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
+            <Bell size={18} />
+          </div>
+
         </div>
+
+      </div>
+
+
+      {/* Alerts Panel */}
+      <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+
+        {/* Tabs */}
+        <div className="flex h-[44px] border-b border-slate-200">
+
+          <Tab
+            label="Alerts (1)"
+            active={activeTab === "alerts"}
+            onClick={() => setActiveTab("alerts")}
+          />
+
+          <Tab
+            label="Upcoming"
+            active={activeTab === "upcoming"}
+            onClick={() => setActiveTab("upcoming")}
+          />
+
+        </div>
+
+
+        {/* Content */}
+        <div className="min-h-[260px]">
+
+          <AlertItem />
+
+        </div>
+
       </div>
 
     </div>
   );
 }
 
+
+function AlertItem() {
+  return (
+    <div className="flex items-center gap-4 px-5 h-[68px] border-b border-slate-100 hover:bg-slate-50 transition cursor-pointer">
+
+      <div className="w-[36px] h-[36px] rounded-lg bg-slate-100 flex items-center justify-center text-slate-600">
+        <Bell size={16} />
+      </div>
+
+      <div className="flex flex-col flex-1 min-w-0 gap-[2px]">
+
+        <span className="text-[11px] font-semibold text-red-600">
+          Listing Not Complete
+        </span>
+
+        <span className="text-[13px] font-semibold text-slate-900 truncate">
+          Untitled Opportunity
+        </span>
+
+        <span className="text-[11px] w-fit px-2 py-[2px] rounded bg-slate-100 text-slate-600">
+          Competition
+        </span>
+
+      </div>
+
+      <div className="w-[28px] h-[28px] flex items-center justify-center rounded-md text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition">
+        <ArrowUpRight size={16} />
+      </div>
+
+    </div>
+  );
+}
+
+
 function Tab({ label, active, onClick }) {
   return (
-    <div
+    <button
       onClick={onClick}
-      className={`relative flex items-center justify-center px-4 text-[13.5px] cursor-pointer select-none transition
-        ${active ? "text-indigo-700 font-bold" : "text-gray-400 font-medium"}
-      `}
+      className={`flex-1 flex items-center justify-center text-[13px] font-medium transition relative
+      ${active ? "text-indigo-600" : "text-slate-500 hover:text-slate-700"}`}
     >
       {label}
-      <span
-        className={`absolute bottom-0 left-0 right-0 h-[2.5px] rounded-t
-          ${active ? "bg-indigo-700" : "bg-transparent"}
-        `}
-      />
-    </div>
+
+      {active && (
+        <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-indigo-600"></span>
+      )}
+    </button>
   );
 }

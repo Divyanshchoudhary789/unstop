@@ -3,7 +3,7 @@ import Promo from "../../assets/home-images/promo.webp"
 
 export default function PromoSection() {
   return (
-    <div className="max-w-7xl px-7 mx-auto flex gap-4 py-3" >
+    <div className="w-full max-w-7xl flex mx-auto px-5 gap-4 py-3" >
 
       <a
         href="https://play.google.com/store/apps/details?id=com.dare2compete.app"
@@ -18,7 +18,7 @@ export default function PromoSection() {
             Download
           </p>
           <h2 className="text-4xl font-extrabold text-gray-800 leading-tight">
-            Unstop App
+            SyncLyft App
           </h2>
         </div>
 
@@ -35,7 +35,7 @@ export default function PromoSection() {
         href="/refer-and-earn"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-1 relative rounded-2xl p-8
+        className="flex-1 relative rounded-2xl p-8 
                    bg-gradient-to-r
                    from-[#cfe3f5] via-[#b9d6ec] to-[#a7cbe4]
                    overflow-hidden

@@ -5,7 +5,7 @@ import conquest from "../../assets/home-images/conquest.avif"
 
 export default function CodingSprintSection() {
     return (
-        <div className=" mx-auto  px-6 py-3">
+        <div className="max-w-7xl mx-auto  px-6 py-3">
             <div className="flex gap-3 ">
 
                 <a

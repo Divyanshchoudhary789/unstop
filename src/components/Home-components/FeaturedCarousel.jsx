@@ -1,183 +1,276 @@
-import React, { useRef, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import React, { useRef, useState, useEffect } from "react"
+import { ChevronLeft, ChevronRight, Heart } from "lucide-react"
 
 const originalData = [
-    {
-        title: "H&S Brand Champion Challenge",
-        image:
-            "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/699407471448e_hs-brand-champion-challenge.jpg?d=451x676",
-        mode: "Online",
-        price: "Free",
-    },
-    {
-        title: "Unstop Weekend Internship",
-        image:
-            "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/69871a1664c48_unstop-weekend-internship.jpg?d=451x676",
-        mode: "WFH",
-        price: "Free",
-    },
-    {
-        title: "India Innovates 2026",
-        image:
-            "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/6998570fe6905_india_innovates_featured.jpg?d=451x676",
-        mode: "Offline",
-        price: "Free",
-    },
-    {
-        title: "Virtual Webinar on April 10",
-        image:
-            "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/699970e0d6d80_virtual-webinar-on-april-10.jpg?d=451x676",
-        mode: "Online",
-        price: "Free",
-    },
-];
+  {
+    title: "H&S Brand Champion Challenge",
+    image:
+      "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/699407471448e_hs-brand-champion-challenge.jpg",
+    mode: "Online",
+    price: "Free",
+  },
+  {
+    title: "Unstop Weekend Internship",
+    image:
+      "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/69871a1664c48_unstop-weekend-internship.jpg",
+    mode: "WFH",
+    price: "Free",
+  },
+  {
+    title: "India Innovates 2026",
+    image:
+      "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/6998570fe6905_india_innovates_featured.jpg",
+    mode: "Offline",
+    price: "Free",
+  },
+  {
+    title: "Virtual Webinar on April 10",
+    image:
+      "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/699970e0d6d80_virtual-webinar-on-april-10.jpg",
+    mode: "Online",
+    price: "Free",
+  },
+]
 
-const CARD_WIDTH = 324; 
-const VISIBLE_COUNT = 4;
-const VIEWPORT_WIDTH = 1290; 
+const CARD_WIDTH = 324
+const VISIBLE_COUNT = 4
+const VIEWPORT_WIDTH = 1290
 
-const FeaturedCarousel = () => {
-    const trackRef = useRef(null);
+export default function FeaturedCarousel() {
 
-    const data = [
-        ...originalData.slice(-VISIBLE_COUNT),
-        ...originalData,
-        ...originalData.slice(0, VISIBLE_COUNT),
-    ];
+  const trackRef = useRef(null)
 
-    const [index, setIndex] = useState(VISIBLE_COUNT);
-    const [isHovered, setIsHovered] = useState(false);
+  const data = [
+    ...originalData.slice(-VISIBLE_COUNT),
+    ...originalData,
+    ...originalData.slice(0, VISIBLE_COUNT),
+  ]
 
-    const moveTo = (newIndex) => {
-        setIndex(newIndex);
-    };
+  const [index, setIndex] = useState(VISIBLE_COUNT)
+  const [isHovered, setIsHovered] = useState(false)
 
-    useEffect(() => {
-        const track = trackRef.current;
+  const moveTo = (newIndex) => {
+    setIndex(newIndex)
+  }
 
-        track.style.transition = "transform 0.9s ease";
-        track.style.transform = `translateX(-${index * CARD_WIDTH}px)`;
+  useEffect(() => {
+    const track = trackRef.current
 
-        const handleTransitionEnd = () => {
-            if (index >= originalData.length + VISIBLE_COUNT) {
-                track.style.transition = "none";
-                const newIndex = VISIBLE_COUNT;
+    track.style.transition = "transform 0.8s ease"
+    track.style.transform = `translateX(-${index * CARD_WIDTH}px)`
 
-                track.style.transform = `translateX(-${newIndex * CARD_WIDTH}px)`;
+    const handleTransitionEnd = () => {
 
-                track.offsetHeight;
+      if (index >= originalData.length + VISIBLE_COUNT) {
+        track.style.transition = "none"
+        const newIndex = VISIBLE_COUNT
+        track.style.transform = `translateX(-${newIndex * CARD_WIDTH}px)`
+        track.offsetHeight
+        setIndex(newIndex)
+      }
 
-                setIndex(newIndex);
-            }
+      if (index < VISIBLE_COUNT) {
+        track.style.transition = "none"
+        const newIndex = originalData.length + VISIBLE_COUNT - 1
+        track.style.transform = `translateX(-${newIndex * CARD_WIDTH}px)`
+        track.offsetHeight
+        setIndex(newIndex)
+      }
 
-            if (index < VISIBLE_COUNT) {
-                track.style.transition = "none";
-                const newIndex = originalData.length + VISIBLE_COUNT - 1;
+    }
 
-                track.style.transform = `translateX(-${newIndex * CARD_WIDTH}px)`;
+    track.addEventListener("transitionend", handleTransitionEnd)
 
-                track.offsetHeight;
+    return () =>
+      track.removeEventListener("transitionend", handleTransitionEnd)
 
-                setIndex(newIndex);
-            }
-        };
+  }, [index])
 
-        track.addEventListener("transitionend", handleTransitionEnd);
 
-        return () =>
-            track.removeEventListener("transitionend", handleTransitionEnd);
-    }, [index]);
-    useEffect(() => {
-        if (isHovered) return;
+  useEffect(() => {
 
-        const interval = setInterval(() => {
-            moveTo(index + 1);
-        }, 3000);
+    if (isHovered) return
 
-        return () => clearInterval(interval);
-    }, [index, isHovered]);
+    const interval = setInterval(() => {
+      moveTo(index + 1)
+    }, 3500)
 
-    return (
-        <div className="w-full max-w-7xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-4">
-  <span className="w-1.5 h-8 bg-color rounded-sm"></span>
-  <span>Featured</span>
-</h2>
-            <div className="relative p-3">
-                <button
-                    onClick={() => moveTo(index - 1)}
-                    className="absolute -left-14 top-1/2 -translate-y-1/2 z-20
-             w-12 h-12 flex items-center justify-center
-             bg-white border border-gray-200
-             shadow-xl rounded-full
-             hover:scale-110 hover:shadow-2xl
-             transition-all duration-300 cursor-pointer"
-                >
-                    <ChevronLeft size={22} />
-                </button>
+    return () => clearInterval(interval)
 
-                <div
-                    className="overflow-hidden mx-auto"
-                    style={{ width: `${VIEWPORT_WIDTH}px` }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
-                    <div
-                        ref={trackRef}
-                        className="flex gap-6"
-                        style={{
-                            transform: `translateX(-${index * CARD_WIDTH}px)`,
-                        }}
-                    >
-                        {data.map((item, i) => (
-                            <div
-                                key={i}
-                                className="min-w-[300px] bg-white rounded-xl shadow-md cursor-pointer hover:text-blue-500"
-                            >
-                                <div className="relative">
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="w-full h-[320px] object-cover rounded-t-xl"
-                                    />
-                                    <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow hover:bg-gray-100">
-                                        <Heart size={16} />
-                                    </button>
-                                </div>
+  }, [index, isHovered])
 
-                                <div className="p-4">
-                                    <div className="flex justify-between text-sm mb-2">
-                                        <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded">
-                                            {item.mode}
-                                        </span>
-                                        <span className="text-green-600 font-medium">
-                                            {item.price}
-                                        </span>
-                                    </div>
 
-                                    <h3 className="text-sm font-semibold line-clamp-2">
-                                        {item.title}
-                                    </h3>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+  return (
+
+    <section className="max-w-7xl mx-auto px-6 py-12">
+
+      {/* Header */}
+      <div className="flex items-center justify-between mb-8">
+
+        <div>
+          <h2 className="text-2xl font-semibold text-slate-900">
+            Featured Opportunities
+          </h2>
+
+          <p className="text-sm text-slate-500">
+            Discover trending internships and competitions
+          </p>
+        </div>
+
+      </div>
+
+
+      <div className="relative">
+
+        {/* LEFT BUTTON */}
+        <button
+          onClick={() => moveTo(index - 1)}
+          className="
+          absolute -left-6 top-1/2 -translate-y-1/2 z-20
+          w-10 h-10
+          bg-white
+          border border-slate-200
+          rounded-full
+          flex items-center justify-center
+          shadow-sm
+          hover:bg-slate-50
+          transition
+          "
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+
+        {/* VIEWPORT */}
+        <div
+          className="overflow-hidden mx-auto"
+          style={{ width: `${VIEWPORT_WIDTH}px` }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+
+          <div
+            ref={trackRef}
+            className="flex gap-6"
+            style={{
+              transform: `translateX(-${index * CARD_WIDTH}px)`
+            }}
+          >
+
+            {data.map((item, i) => (
+
+              <div
+                key={i}
+                className="
+                min-w-[300px]
+                bg-white
+                border border-slate-200
+                rounded-2xl
+                overflow-hidden
+                group
+                hover:shadow-lg
+                transition
+                cursor-pointer
+                "
+              >
+
+                {/* IMAGE */}
+                <div className="relative overflow-hidden">
+
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="
+                    w-full
+                    h-[300px]
+                    object-cover
+                    group-hover:scale-105
+                    transition duration-500
+                    "
+                  />
+
+                  <button className="
+                    absolute top-3 right-3
+                    w-8 h-8
+                    bg-white
+                    rounded-full
+                    flex items-center justify-center
+                    shadow-sm
+                    hover:bg-slate-50
+                    transition
+                  ">
+                    <Heart size={16} />
+                  </button>
+
                 </div>
 
-                <button
-                    onClick={() => moveTo(index + 1)}
-                    className="absolute -right-14 top-1/2 -translate-y-1/2 z-20
-             w-12 h-12 flex items-center justify-center
-             bg-white border border-gray-200
-             shadow-xl rounded-full
-             hover:scale-110 hover:shadow-2xl
-             transition-all duration-300 cursor-pointer"
-                >
-                    <ChevronRight size={22} />
-                </button>
-            </div>
-        </div>
-    );
-};
 
-export default FeaturedCarousel;
+                {/* CONTENT */}
+                <div className="p-4 flex flex-col gap-3">
+
+                  <div className="flex items-center justify-between text-xs">
+
+                    <span className="
+                      px-2 py-1
+                      rounded-md
+                      bg-indigo-50
+                      text-indigo-600
+                      font-medium
+                    ">
+                      {item.mode}
+                    </span>
+
+                    <span className="font-medium text-emerald-600">
+                      {item.price}
+                    </span>
+
+                  </div>
+
+                  <h3 className="
+                    text-sm
+                    font-semibold
+                    text-slate-800
+                    leading-snug
+                    line-clamp-2
+                    group-hover:text-indigo-600
+                    transition
+                  ">
+                    {item.title}
+                  </h3>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+
+        {/* RIGHT BUTTON */}
+        <button
+          onClick={() => moveTo(index + 1)}
+          className="
+          absolute -right-6 top-1/2 -translate-y-1/2 z-20
+          w-10 h-10
+          bg-white
+          border border-slate-200
+          rounded-full
+          flex items-center justify-center
+          shadow-sm
+          hover:bg-slate-50
+          transition
+          "
+        >
+          <ChevronRight size={20} />
+        </button>
+
+      </div>
+
+    </section>
+
+  )
+
+}

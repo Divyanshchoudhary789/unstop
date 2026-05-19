@@ -1,190 +1,303 @@
-import { Bell, PanelLeftOpen } from "lucide-react"
-import { useState, useEffect, useRef } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import User from "../assets/user.svg"
-import Mentor from "../assets/mentor.svg"
-import Search from "../assets/search.svg"
 import Profile from "../assets/profile.webp"
-import Talent from "./Talent"
-import TalentPreview from "./TalentPreview"
-import ProfileDropdown from "./ProfileDropdown"
-import Recruiter from "./Recruiter"
-import RecruiterPreview from "./RecruiterPreview"
-const Sidebar = () => {
-    const navigate = useNavigate();
-    const [talentReset, setTalentReset] = useState(0)
-    const [activePanel, setActivePanel] = useState("talent")
-    const [hoverPanel, setHoverPanel] = useState(null)
-    const [isPanelOpen, setIsPanelOpen] = useState(false)
-    const [isPanelForcedOpen, setIsPanelForcedOpen] = useState(false)
-    const [isProfileOpen, setIsProfileOpen] = useState(false)
-    const menuItems = [
-        { name: "talent", icon: User, label: "Talent", route: "/" },
-        { name: "recruiter", icon: Search, label: "Recruiter", route: "/dashboard" },
-    ]
-    const profileRef = useRef(null)
-    const location = useLocation()
+import Logo from "../assets/logo.png"
 
-    const recruiterRoutes = [
-        "/dashboard",
-        "/myjobinternships",
-        "/myopportunities",
-        "/festivals",
-        "/assessments",
-        "/talentpipeline"
-    ]
+import {
+  Bell,
+  House,
+  GraduationCap,
+  NotepadTextDashed,
+  Briefcase,
+  Search
+} from "lucide-react"
 
-    useEffect(() => {
-        const isRecruiterRoute = recruiterRoutes.some(route =>
-            location.pathname.startsWith(route)
-        )
+import { LuBriefcaseBusiness } from "react-icons/lu"
+import { GoTrophy } from "react-icons/go"
+import { LiaUserTieSolid } from "react-icons/lia"
+import { TbUserScan } from "react-icons/tb"
+import { FaBook, FaCode } from "react-icons/fa"
+import { useState } from "react"
+const navItems = [
+  { icon: House, label: "Home", route: "/", emoji: "🏠" },
+  { icon: GraduationCap, label: "Internships", route: "/internship", emoji: "🎓" },
+  { icon: LuBriefcaseBusiness, label: "Jobs", route: "/jobs", emoji: "💼" },
+  { icon: GoTrophy, label: "Competitions", route: "/competition", emoji: "🏆" },
+  { icon: LiaUserTieSolid, label: "Mentorship", route: "/mentorship", emoji: "🤝" },
+  { icon: FaBook, label: "Mock Tests", route: "/mocktest", emoji: "📚" },
+  { icon: TbUserScan, label: "Mock Interview", route: "/mockinterview", emoji: "🎙️" },
+  { icon: FaCode, label: "100 Days Code", route: "/code", emoji: "💻" },
+  { icon: NotepadTextDashed, label: "Courses", route: "/courses", emoji: "📝" },
+]
 
-        if (isRecruiterRoute) {
-            setActivePanel("recruiter")
-        } else {
-            setActivePanel("talent")
-        }
-    }, [location.pathname])
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (
-                profileRef.current &&
-                !profileRef.current.contains(event.target)
-            ) {
-                setIsProfileOpen(false)
-            }
-        }
+const Layout = ({ children }) => {
 
-        document.addEventListener("mousedown", handleClickOutside)
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside)
-        }
-    }, [])
+  const navigate = useNavigate()
+  const [searchFocused, setSearchFocused] = useState(false)
+
+  const location = useLocation()
+
+  const NavItem = ({ icon: Icon, label, route }) => {
+
+    const active = location.pathname === route
+
     return (
-        <>
-            <section
-                className="fixed z-60 left-0 top-0 w-20 h-screen bg-blue-100 flex flex-col items-center py-4"
-            >
-                <button
-                    onClick={() => {
-                        if (isPanelOpen) {
-                            setIsPanelForcedOpen(false)
-                            setTalentReset(prev => prev + 1)
-                        } else {
-                            setIsPanelForcedOpen(true)
-                        }
-                    }}
-                    className="p-2 rounded-lg  transition-all cursor-pointer"
-                >
-                    <PanelLeftOpen
-                        size={26}
-                        className={`transition-all duration-300 ${isPanelOpen ? "text-gray-900 rotate-180" : "text-gray-500"
-                            }`}
-                    />
-                </button>
+      <div
+        onClick={() => navigate(route)}
+        className={`
+      relative
+      group
+      flex items-center
+      gap-3
+      px-3 py-2.5
+      rounded-xl
+      cursor-pointer
+      transition-all
+      duration-200
+      text-[12px]
+      ${active
+            ? "bg-gradient-to-r from-indigo-50 to-sky-50 text-indigo-600 shadow-sm"
+            : "border border-pink-200 shadow-xl"}
+      `}
+      >
 
-                <div className="h-full flex flex-col items-center gap-6 pt-6">
-                    {menuItems.map((item) => (
-                        <div
-                            key={item.name}
-                            onMouseEnter={() => {
-                                if (item.name !== activePanel) {
-                                    setHoverPanel(item.name)
-                                }
-                            }} onClick={() => {
-                                setActivePanel(item.name)
-                                setHoverPanel(null)
-                                navigate(item.route)
-                            }}
-                            className="flex flex-col items-center cursor-pointer group"
-                        >
-                            <div
-                                className={`p-2 rounded-lg transition-all ${activePanel === item.name
-                                    ? "bg-blue-200"
-                                    : "hover:bg-gray-200"
-                                    }`}
-                            >
-                                <img src={item.icon} alt="" className="w-6" />
-                            </div>
+        {/* Active Left Indicator */}
+        {active && (
+          <div
+            className="
+          absolute left-0
+          top-1/2 -translate-y-1/2
+          h-5 w-[3px]
+          rounded-r-full
+          
+        "
+          />
+        )}
 
-                            <span
-                                className={`text-xs mt-1 font-medium ${activePanel === item.name
-                                    ? "text-blue-700"
-                                    : "text-gray-700"
-                                    }`}
-                            >
-                                {item.label}
-                            </span>
-                        </div>
-                    ))}
-                </div>
+        {/* Icon Bubble */}
+        <div
+          className={`
+  flex items-center gap-2
+  px-3 py-1.5
+  rounded-lg
+  text-[13px] font-medium
+  transition
+  ${active
+              ? " text-indigo-600 shadow-sm"
+              : "text-slate-00 hover:bg-slate-100"
+            }
+`}
+        >
+          <Icon size={16} />
+          <span>{label}</span>
+        </div>
 
-                <div className="flex flex-col items-center gap-6">
-                    <div className="p-2 rounded-lg hover:bg-gray-200 cursor-pointer">
-                        <Bell size={22} />
-                    </div>
-                    <div ref={profileRef} className="relative">
-                        <div
-                            className="cursor-pointer"
-                            onClick={() => setIsProfileOpen(prev => !prev)}
-                        >
-                            <img
-                                src={Profile}
-                                alt=""
-                                className="w-9 h-9 rounded-full border"
-                            />
-                        </div>
+        <div
+          className="
+        absolute inset-0
+        rounded-xl
+        opacity-0
+        group-hover:opacity-100
+        transition
+        bg-gradient-to-r
+        from-indigo-100/40
+        to-sky-100/40
+        -z-10
+        "
+        />
 
-                        {isProfileOpen && (
-                            <div className="absolute bottom-100 left-100 z-[999]">
-                                <ProfileDropdown />
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </section>
-
-            {hoverPanel && hoverPanel !== activePanel && (
-                <div
-                    onMouseEnter={() => setHoverPanel(hoverPanel)}
-                    onMouseLeave={() => setHoverPanel(null)}
-                    className="fixed left-20 top-15 h-[92vh] w-64 bg-white rounded-2xl border border-blue-400 shadow-2xl transition-all duration-300 ease-out z-70"
-                >
-                    {hoverPanel === "talent" && (
-                        <TalentPreview
-                            setActivePanel={setActivePanel}
-                            setHoverPanel={setHoverPanel}
-                        />
-                    )}
-                    {hoverPanel === "recruiter" && (
-                        <RecruiterPreview
-                            setActivePanel={setActivePanel}
-                            setHoverPanel={setHoverPanel}
-                        />
-                    )}
-                </div>
-            )}
-
-            {activePanel === "talent" && (
-                <div className="fixed top-0 left-20 h-screen z-[40]">
-                    <Talent
-                        isForcedOpen={isPanelForcedOpen}
-                        setIsTalentOpen={setIsPanelOpen}
-                        resetSignal={talentReset}
-                    />
-                </div>
-            )}
-            {activePanel === "recruiter" && (
-                <div className="fixed top-0 left-20 h-screen z-[40]">
-                    <Recruiter
-                        isForcedOpen={isPanelForcedOpen}
-                        setIsTalentOpen={setIsPanelOpen}
-                        resetSignal={talentReset}
-                    />
-                </div>
-            )}
-        </>
+      </div>
     )
+  }
+  return (
+
+    <div className="h-screen flex flex-col bg-indigo-50 font-sans">
+
+
+      <nav
+        className="
+  fixed top-0 left-0 right-0
+  h-16
+  flex items-center
+  px-6
+  gap-6
+  z-50
+  bg-white/80
+  backdrop-blur-xl
+  border-b border-gray-200
+  shadow-sm
+  "
+      >
+        {/* LOGO */}
+        <div className="flex items-center gap-3 w-[220px] min-w-[220px]">
+
+          <div className="
+      w-9 h-9
+      rounded-xl
+      bg-gradient-to-br
+      from-gray-100
+      to-gray-300
+      flex items-center justify-center
+      shadow-inner
+      border border-gray-200
+      overflow-hidden
+    ">
+            <img src={Logo} alt="logo" className="w-full h-full object-contain" />
+          </div>
+
+          <span className="text-[16px] font-semibold text-gray-800 tracking-tight">
+            SyncLyft
+          </span>
+
+        </div>
+
+
+        {/* SEARCH */}
+        <div className="relative flex-1 max-w-[420px]">
+
+          <Search
+            size={16}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          />
+
+          <input
+            type="search"
+            placeholder="Search opportunities..."
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => setSearchFocused(false)}
+            className="
+      w-full
+      h-10
+      pl-10 pr-4
+      rounded-xl
+      bg-gray-100
+      border border-gray-200
+      text-gray-700
+      text-[14px]
+      outline-none
+      focus:bg-white
+      focus:border-gray-300
+      transition
+      "
+          />
+
+        </div>
+
+
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-3 ml-auto">
+
+          <button
+            className="
+      flex items-center gap-2
+      px-4
+      h-9
+      rounded-lg
+      bg-gray-100
+      border border-gray-200
+      text-gray-700
+      text-[13px]
+      hover:bg-gray-200
+      transition
+      "
+          >
+            <Briefcase size={14} />
+            Business
+          </button>
+
+
+          {/* Notifications */}
+          <div
+            className="
+      relative
+      w-9 h-9
+      rounded-lg
+      flex items-center justify-center
+      bg-gray-100
+      border border-gray-200
+      hover:bg-gray-200
+      cursor-pointer
+      transition
+      "
+          >
+            <Bell size={16} />
+
+            <span
+              className="
+        absolute
+        top-1.5 right-1.5
+        w-2 h-2
+        rounded-full
+        bg-red-500
+        "
+            />
+          </div>
+
+
+          {/* Avatar */}
+          <img
+            src={Profile}
+            alt="profile"
+            className="
+      w-9 h-9
+      rounded-lg
+      object-cover
+      border border-gray-200
+      cursor-pointer
+      "
+          />
+
+        </div>
+
+      </nav>
+
+
+
+
+      <div className="flex flex-1 pt-16 overflow-hidden">
+
+
+        <aside
+          style={{
+              backgroundImage: "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)"
+          }}
+          className="
+  w-[230px]
+  min-w-[230px]
+  border-r border-gray-200
+  flex flex-col
+  px-3
+  py-5
+  gap-1
+  overflow-y-auto
+"
+        >
+
+          {navItems.map((item) => (
+            <NavItem key={item.label} {...item} />
+          ))}
+
+        </aside>
+
+
+
+        <main className="
+        flex-1
+        overflow-y-auto
+        
+        ">
+
+          <div className="max-w-screen-2xl mx-auto">
+
+            {children}
+
+          </div>
+
+        </main>
+
+      </div>
+
+    </div>
+  )
 }
 
-export default Sidebar
+export default Layout
